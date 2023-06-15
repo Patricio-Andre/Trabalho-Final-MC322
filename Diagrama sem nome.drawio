@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-06-13T14:49:35.847Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="VY_zOQiYd1MRkbIH2ulH" version="21.3.8" type="github">
+<mxfile host="app.diagrams.net" modified="2023-06-15T18:04:54.628Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/109.0" etag="LSk0rfqiUBazDM9sjJu5" version="21.4.0" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="1434" dy="775" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1434" dy="715" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -125,12 +125,12 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="DUk6I2xnCjZQWjMvz-8V-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="-9V2bEK6rvMUXnRSOSfq-493" target="-9V2bEK6rvMUXnRSOSfq-531">
+        <mxCell id="DUk6I2xnCjZQWjMvz-8V-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="-9V2bEK6rvMUXnRSOSfq-493" target="-9V2bEK6rvMUXnRSOSfq-531" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="600" y="1930" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="DUk6I2xnCjZQWjMvz-8V-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="-9V2bEK6rvMUXnRSOSfq-493" target="-9V2bEK6rvMUXnRSOSfq-530">
+        <mxCell id="DUk6I2xnCjZQWjMvz-8V-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="-9V2bEK6rvMUXnRSOSfq-493" target="-9V2bEK6rvMUXnRSOSfq-530" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="-9V2bEK6rvMUXnRSOSfq-493" value="Paciente &amp;lt;abstract&amp;gt;" style="swimlane;whiteSpace=wrap;html=1;startSize=30;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
@@ -153,6 +153,9 @@
         </mxCell>
         <mxCell id="-9V2bEK6rvMUXnRSOSfq-510" value="Sintomas" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="-9V2bEK6rvMUXnRSOSfq-493" vertex="1">
           <mxGeometry y="180" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-9V2bEK6rvMUXnRSOSfq-514" value="examesproibidos" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="-9V2bEK6rvMUXnRSOSfq-493" vertex="1">
+          <mxGeometry x="20" y="130" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="-9V2bEK6rvMUXnRSOSfq-494" value="Particular" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="30" y="1450" width="200" height="200" as="geometry" />
@@ -251,9 +254,6 @@
             <mxPoint x="200" y="100" as="targetPoint" />
             <Array as="points" />
           </mxGeometry>
-        </mxCell>
-        <mxCell id="-9V2bEK6rvMUXnRSOSfq-514" value="examesproibidos" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="300" y="1200" width="60" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
