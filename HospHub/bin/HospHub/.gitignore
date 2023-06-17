@@ -24,3 +24,6 @@
 /ArquivoReceita.class
 /ExameInconpativelException.class
 /PacientenotFoundException.class
+/ExameIncompativelException.class
+/ProfissionalUnfitException.class
+/PacienteNotFoundException.class
