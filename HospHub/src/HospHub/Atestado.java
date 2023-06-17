@@ -32,7 +32,7 @@ public class Atestado {
     }
 
     public String toString(){
-        return "e medique " + medique + " concede " + diasAusencia + " dias de ausencia baseando se no atendimento de " + dataAtendimento;
+        return "e medique " + medique + " concede " + diasAusencia + " dias de ausencia a partir de " + dataAtendimento;
     }
     
 }
