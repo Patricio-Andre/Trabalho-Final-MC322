@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-06-17T13:20:55.580Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="dpJSigu7_5lbuxraU-MK" version="21.3.8" type="github">
+<mxfile host="app.diagrams.net" modified="2023-06-17T13:27:29.590Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="ZWsjxwlohfvZ21AkZB9L" version="21.3.8" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="1434" dy="775" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -282,7 +282,7 @@
         <mxCell id="CyfO7_76a3TtjCnsQ1G2-10" value="exameincompativel" style="swimlane;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="795" y="680" width="200" height="200" as="geometry" />
         </mxCell>
-        <mxCell id="CyfO7_76a3TtjCnsQ1G2-11" value="foradePlantao" style="swimlane;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+        <mxCell id="CyfO7_76a3TtjCnsQ1G2-11" value="ProfissionalUnfit" style="swimlane;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="1080" y="690" width="200" height="200" as="geometry" />
         </mxCell>
         <mxCell id="CyfO7_76a3TtjCnsQ1G2-12" value="&lt;div&gt;-enfermeira&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
@@ -299,6 +299,9 @@
         </mxCell>
         <mxCell id="Ks9QB9N6ebiZV_AhtOyt-4" value="ArquivoLaudo" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="1120" y="1290" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="Ks9QB9N6ebiZV_AhtOyt-5" value="PacientenotFound" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="765" y="890" width="200" height="200" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
