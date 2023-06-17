@@ -1,0 +1,5 @@
+package hosphub;
+
+public class RemedioIncompativelException extends Exception {
+
+}
