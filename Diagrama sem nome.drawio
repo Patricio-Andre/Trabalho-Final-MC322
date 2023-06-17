@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-06-17T13:28:23.575Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="nRt7hguySpntc07fCjp3" version="21.3.8" type="github">
+<mxfile host="app.diagrams.net" modified="2023-06-17T13:32:20.141Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="za7AFGOW3DDkh1a0yQ9b" version="21.3.8" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="1434" dy="775" grid="1" gridSize="10" guides="0" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -139,7 +139,7 @@
         <mxCell id="-9V2bEK6rvMUXnRSOSfq-493" value="Paciente &amp;lt;abstract&amp;gt;" style="swimlane;whiteSpace=wrap;html=1;startSize=30;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="50" y="1210" width="230" height="220" as="geometry" />
         </mxCell>
-        <mxCell id="-9V2bEK6rvMUXnRSOSfq-513" value="- nome: String&lt;br&gt;- idade: int&lt;br&gt;- alergia: String&amp;nbsp;&lt;br&gt;- nivel de dor: int&lt;br&gt;- especialidadePrecisa: String&lt;br&gt;- quarto: String&lt;br&gt;&lt;div&gt;- gravidade: String&lt;/div&gt;&lt;div&gt;-cpf&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="-9V2bEK6rvMUXnRSOSfq-493" vertex="1">
+        <mxCell id="-9V2bEK6rvMUXnRSOSfq-513" value="- nome: String&lt;br&gt;- idade: int&lt;br&gt;- remediosProibidos&lt;br&gt;- nivel de dor: int&lt;br&gt;- especialidadePrecisa: String&lt;br&gt;- quarto: String&lt;br&gt;&lt;div&gt;- gravidade: String&lt;/div&gt;&lt;div&gt;-cpf&lt;br&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="-9V2bEK6rvMUXnRSOSfq-493" vertex="1">
           <mxGeometry y="33" width="230" height="100" as="geometry" />
         </mxCell>
         <mxCell id="-9V2bEK6rvMUXnRSOSfq-532" value="atestado" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="-9V2bEK6rvMUXnRSOSfq-493" vertex="1">
@@ -155,7 +155,7 @@
           <mxGeometry x="140" y="170" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="-9V2bEK6rvMUXnRSOSfq-510" value="Sintomas" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="-9V2bEK6rvMUXnRSOSfq-493" vertex="1">
-          <mxGeometry y="180" width="60" height="30" as="geometry" />
+          <mxGeometry x="150" y="40" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="-9V2bEK6rvMUXnRSOSfq-514" value="examesproibidos" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="-9V2bEK6rvMUXnRSOSfq-493" vertex="1">
           <mxGeometry x="20" y="130" width="60" height="30" as="geometry" />
