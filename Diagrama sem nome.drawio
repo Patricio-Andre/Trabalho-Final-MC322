@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-06-17T13:19:20.247Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="Vv_NXdqBg2kWKPO8wujy" version="21.3.8" type="github">
+<mxfile host="app.diagrams.net" modified="2023-06-17T13:20:55.580Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="dpJSigu7_5lbuxraU-MK" version="21.3.8" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="1434" dy="775" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -91,8 +91,8 @@
         <mxCell id="-9V2bEK6rvMUXnRSOSfq-34" value="- especialidade : String&lt;br&gt;- custo: double" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="-9V2bEK6rvMUXnRSOSfq-478" vertex="1">
           <mxGeometry y="20" width="200" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="-9V2bEK6rvMUXnRSOSfq-529" value="+ gerarlaudo: boolean&lt;br&gt;+ Solicitacao exame: boolean&lt;br&gt;+ geraratestado: boolean&lt;br&gt;+ cobrar: boolean&lt;br&gt;+ disponivel: boolean" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="-9V2bEK6rvMUXnRSOSfq-478" vertex="1">
-          <mxGeometry y="60" width="200" height="80" as="geometry" />
+        <mxCell id="-9V2bEK6rvMUXnRSOSfq-529" value="+ gerarlaudo: boolean&lt;br&gt;+ Solicitacao exame: boolean&lt;br&gt;+ geraratestado: boolean&lt;br&gt;+ cobrar: boolean" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="-9V2bEK6rvMUXnRSOSfq-478" vertex="1">
+          <mxGeometry x="10" y="60" width="200" height="80" as="geometry" />
         </mxCell>
         <mxCell id="2CkzwocB3PWpD3vvepL0-5" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;endArrow=none;endFill=0;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=1;entryDx=0;entryDy=0;" parent="-9V2bEK6rvMUXnRSOSfq-478" source="-9V2bEK6rvMUXnRSOSfq-34" target="-9V2bEK6rvMUXnRSOSfq-34" edge="1">
           <mxGeometry width="80" relative="1" as="geometry">
