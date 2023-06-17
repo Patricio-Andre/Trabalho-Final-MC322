@@ -1,5 +1,5 @@
-package hospitaleservicos;
+package HospHub;
 
-public class RemedioIncompativel extends Exception {
+public class RemedioIncompativelException extends Exception {
 
 }
