@@ -14,3 +14,13 @@
 /RemedioIncompativel.class
 /ValidaDados.class
 /Atestado.class
+/RemedioIncompativelException.class
+/Internacao.class
+/ProfissionalUnfit.class
+/PacientenotFound.class
+/ArquivoProfissionais.class
+/ArquivoLaudo.class
+/ArquivoAtestado.class
+/ArquivoReceita.class
+/ExameInconpativelException.class
+/PacientenotFoundException.class

@@ -22,3 +22,8 @@
 /ArquivoLaudo.class
 /ArquivoAtestado.class
 /ArquivoReceita.class
+/ExameInconpativelException.class
+/PacientenotFoundException.class
+/ExameIncompativelException.class
+/ProfissionalUnfitException.class
+/PacienteNotFoundException.class
