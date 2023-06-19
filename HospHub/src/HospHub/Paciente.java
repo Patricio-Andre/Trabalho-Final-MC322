@@ -1,5 +1,5 @@
 package HospHub;
 
-public abstract class Paciente implements Cadastrable{
+public abstract class Paciente {
 
 }
