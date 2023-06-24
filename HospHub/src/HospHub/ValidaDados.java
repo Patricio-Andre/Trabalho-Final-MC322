@@ -1,3 +1,4 @@
+
 package HospHub;
 
 import java.util.ArrayList;
@@ -109,3 +110,4 @@ public class ValidaDados {
 
 
 }
+

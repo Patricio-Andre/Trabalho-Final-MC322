@@ -1,14 +1,14 @@
 package HospHub;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class Exame {
     private String nome;
     private double custo;
-    private LocalDateTime data;
+    private LocalDate data;
 
 
 
-    public Exame(String nome, double custo, LocalDateTime data){
+    public Exame(String nome, double custo, LocalDate data){
         this.nome = nome;
         this.custo = custo;
         this.data = data;
@@ -34,12 +34,12 @@ public class Exame {
     }
 
 
-    public LocalDateTime getData() {
+    public LocalDate getData() {
         return data;
     }
 
 
-    public void setData(LocalDateTime data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 
@@ -49,4 +49,3 @@ public class Exame {
 
     
 }
-

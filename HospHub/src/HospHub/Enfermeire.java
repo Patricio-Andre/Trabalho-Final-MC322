@@ -20,23 +20,20 @@ public class Enfermeire extends  ProfissionalSaude {
             }
             this.getMapaPacientes().put(paciente.getCPF(), paciente);
             this.setAtendendo(this.getAtendendo()+1);
-            cobrar(paciente);
             System.out.println("paciente cadastrado com sucesso");
             return true;
             }
             }
-        System.out.println("Entrada invalida");
-        return false;
         throw e;
     }
 
-    public void alimentar(Paciente paciente){
-        System.out.println(" o paciente " + paciente + " foi alimentado ");
+    public String alimentar(Paciente paciente){
+        return " o paciente " + paciente + " foi alimentado ";
     }
 
 
-    public void darBanho(Paciente paciente){
-        System.out.println(" o paciente " + paciente + " foi banhado ");
+    public String darBanho(Paciente paciente){
+        return "o paciente " + paciente + " foi banhado ";
     }
 
     

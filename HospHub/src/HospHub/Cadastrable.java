@@ -5,3 +5,4 @@ public interface Cadastrable {
     boolean remover(String id) throws Exception;
 
 }
+
