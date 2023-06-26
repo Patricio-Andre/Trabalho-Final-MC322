@@ -1,6 +1,10 @@
 package HospHub;
 import java.util.LinkedList;
 import java.time.LocalDate;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.StringBuilder;
 
 public class Receita {
@@ -8,22 +12,31 @@ public class Receita {
     private String dosagem; // tem que ser String pq tem unidade
     private ProfissionalSaude profissionalSaude;
     private LinkedList <String> listaInterferencias;
-    private LocalDate dataVencimento; // so vale pra antibiotico 
+    private LocalDate dataVencimento; // so vale pra antibiotico
+    private Paciente paciente;
+    private static int numeroArquivo = 0;
 
-    public Receita(String remedio, String dosagem, ProfissionalSaude profissionalSaude){
+	public Receita(String remedio, String dosagem, ProfissionalSaude profissionalSaude, Paciente paciente){
         this.remedio = remedio;
         this.dosagem = dosagem;
         this.profissionalSaude = profissionalSaude;
         listaInterferencias = new LinkedList<String>();
         dataVencimento = null;
+        this.paciente = paciente;
+        this.paciente.getListaDeReceitas().add(this);
+        salvarArquivo();
+        defineNumeroArquivo();
     }
 
-    public Receita(String remedio, String dosagem, ProfissionalSaude profissionalSaude, LocalDate dataVencimento){
+    public Receita(String remedio, String dosagem, ProfissionalSaude profissionalSaude, LocalDate dataVencimento, Paciente paciente){
         this.remedio = remedio;
         this.dosagem = dosagem;
         this.profissionalSaude = profissionalSaude;
         listaInterferencias = new LinkedList<String>();
         this.dataVencimento = dataVencimento;
+        this.paciente = paciente;
+        salvarArquivo();
+        defineNumeroArquivo();
     }
 
 
@@ -86,6 +99,62 @@ public class Receita {
             sb.append(value);
         }
        return sb.toString().equals("") ? "nao ha interferencias" : sb.toString();
+    }
+    
+    public void defineNumeroArquivo() {
+    	// Garante que todo arquivo terá um nome diferente;
+    	boolean achou = false;
+    	for (int i = 0; i < numeroArquivo; i++) {
+    		String diretorioPrincipal = System.getProperty("user.dir") + File.separator + "receitas";
+            String caminhoArquivo = diretorioPrincipal + File.separator + "Receita_" + paciente.getCPF() + "_" + numeroArquivo + ".txt";
+            File diretorio = new File(diretorioPrincipal);
+            
+            // Verifica se o diretório existe e é um diretório válido
+            if (diretorio.exists() && diretorio.isDirectory()) {
+                // Cria um objeto File para o arquivo
+                File file = new File(diretorio, caminhoArquivo);
+                
+                // Verifica se o arquivo existe
+                if (!file.exists()) {
+                    achou = true;
+                    numeroArquivo = i;
+                }
+            }
+    	}
+        if (!achou) {
+        	numeroArquivo++;
+        }
+    }
+    public void salvarArquivo() {
+    	String diretorioPrincipal = System.getProperty("user.dir") + File.separator + "receitas";
+        String caminhoArquivo = diretorioPrincipal + File.separator + "Receita_" + paciente.getCPF() + "_" + numeroArquivo + ".txt";
+        BufferedWriter writer = null;
+        try {
+        	// Cria o diretório de exames caso não exista
+            File diretorio = new File(diretorioPrincipal);
+            if (!diretorio.exists()) {
+                diretorio.mkdirs();
+            }
+            // Cria o arquivo no diretório relativo ao programa
+            writer = new BufferedWriter(new FileWriter(caminhoArquivo));
+            writer.write("Receita médica");
+            writer.newLine();
+            writer.write("Remédio: " + remedio);
+            writer.newLine();
+            writer.write("Dosagem: " + dosagem);
+            writer.newLine();
+            if (dataVencimento != null) {
+            	writer.write("Data de vencimento" + dataVencimento);
+                writer.newLine();
+            }
+            for (int i = 0; i < 8; i++) {
+            	writer.newLine();
+            }
+            writer.write("Assinatura do profissional de saúde responsável: _________________________________________________________");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public String toString(){

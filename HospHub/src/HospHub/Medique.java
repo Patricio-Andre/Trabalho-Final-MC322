@@ -36,7 +36,7 @@ public class Medique extends ProfissionalSaude {
         if(this.getAtendendo() < this.getLimitepacientes() && LocalTime.now().isAfter(this.getInicioplantao()) && LocalTime.now().isBefore(this.getFimplantao())){ // ver se to de plantao e se minha especialidade eh a dele;
             if(pacienteo instanceof Paciente){
             Paciente paciente = (Paciente) pacienteo;
-            if(paciente.getEspecializacaoPrecisa().equals(especializacao)){
+            if(paciente.getEspecialidadeNecessaria().equals(especializacao)){
                 if(this.getMapaPacientes().containsKey(paciente.getCPF())){
                 System.out.println("paciente ja cadastrado");
                 return false;
@@ -58,12 +58,13 @@ public class Medique extends ProfissionalSaude {
 
     public void cobrar(Paciente paciente){
         if(paciente instanceof PacienteParticular){
-            paciente.setCusto(paciente.getCusto(this.custo));
+        	PacienteParticular pacienteParticular = (PacienteParticular) paciente;
+        	pacienteParticular.setCusto(pacienteParticular.getCusto() + this.custo);
         }
     }
 
     private boolean exameInterfere(Paciente paciente,String nome){
-        if(paciente.getListaExamesIncompativeis().contains(nome)){
+        if(paciente.getExamesProibidos().contains(nome)){
             return true;
         }
         return false;
@@ -78,12 +79,14 @@ public class Medique extends ProfissionalSaude {
             if(interfere){
                 throw a;
             }
-            Exame exame = new Exame(nome, custoE, data);
-            paciente.addExamesfeitos(exame);
+            Exame exame = new Exame(nome, custoE, data, paciente);
+            paciente.getListaDeExames().add(exame);
             if(paciente instanceof PacienteParticular){
-                paciente.setCusto(paciente.getCusto() + custoE);
+            	PacienteParticular pacienteParticular = (PacienteParticular) paciente;
+            	pacienteParticular.setCusto(pacienteParticular.getCusto() + custoE);
             }
             System.out.println("exame solicitado com sucesso");
+            return true;
         }
         catch (PacienteNotFoundException e){
             System.out.println("paciente nao encontrado");
@@ -94,10 +97,11 @@ public class Medique extends ProfissionalSaude {
     public boolean gerarLaudo(String cpf, String doenca, LocalDate dataAtendimento){
         try{
             Paciente paciente = this.achaPaciente(cpf);
-            Laudo laudo = new Laudo(this, doenca, dataAtendimento);
-            paciente.addLaudo(laudo);
-            System.out.println("laudo emitido com sucessso");
 
+            Laudo laudo = new Laudo(this, doenca, dataAtendimento, paciente);
+            paciente.getListaDeLaudos().add(laudo);
+            System.out.println("laudo emitido com sucessso");
+            return true;
         }
         catch (PacienteNotFoundException e){
             System.out.println("paciente nao encontrado");
@@ -108,9 +112,10 @@ public class Medique extends ProfissionalSaude {
     public boolean gerarAtestado(String cpf, int diasAusencia, LocalDate data){
         try{
             Paciente paciente = this.achaPaciente(cpf);
-            Atestado atestado = new Atestado(this, diasAusencia, data);
-            paciente.addAtestado(atestado);
+            Atestado atestado = new Atestado(this, diasAusencia, data, paciente);
+            paciente.getListaDeAtestados().add(atestado);
             System.out.println("atestado emitido com sucessso");
+            return true;
 
         }
         catch (PacienteNotFoundException e){
