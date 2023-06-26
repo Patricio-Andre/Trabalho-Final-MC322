@@ -1,7 +1,7 @@
 package HospHub;
 import java.util.ArrayList;
 import java.time.LocalDate;
-
+import java.time.LocalTime;
 
 public abstract class Paciente{
 	private final String CPF;
@@ -20,9 +20,10 @@ public abstract class Paciente{
 	private ArrayList<Receita> listaDeReceitas = new ArrayList<Receita>();
 	private static int contador = 0;
 	private int[] quartos = new int [30];
+	private Hospital hospital;
 	// Construtor
 	public Paciente(String cPF, int idade, int nivelDor, String nome, String remediosProibidos,
-			String especialidadeNecessaria, String examesProibidos) {
+			String especialidadeNecessaria, String examesProibidos, Hospital hospital) {
 		super();
 		CPF = cPF;
 		this.idade = idade;
@@ -31,6 +32,7 @@ public abstract class Paciente{
 		this.remediosProibidos = remediosProibidos;
 		this.especialidadeNecessaria = especialidadeNecessaria;
 		this.examesProibidos = examesProibidos;
+		this.hospital = hospital;
 		gerarGravidade();
 		adicionarQuarto();
 		alocaMedico();
@@ -198,6 +200,19 @@ public abstract class Paciente{
 	}
 	
 	public void alocaMedico() {
-		
+		for(ProfissionalSaude values: hospital.getMapaFuncionarios().values()){
+			if(values instanceof Medique) {
+				Medique medico = (Medique) values;
+				if (medico.getEspecializacao() == this.especialidadeNecessaria) {
+					if (LocalTime.now().isAfter(medico.getInicioplantao()) 
+							&& LocalTime.now().isBefore(medico.getFimplantao())) {
+							this.medicoAlocado = medico;
+							System.out.println("O médico foi alocado corretamente");
+							return;
+						}
+				}
+			}
+		}
+		System.out.println("Não há médicos disponíveis para esse paciente");
 	}
 }
