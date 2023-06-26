@@ -3,46 +3,50 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.time.Duration;
+import java.time.LocalDate;
 
 
-public abstract class Paciente implements Cadastrable{
-	private final int cpf;
+public abstract class Paciente{
+	private final String CPF;
 	private int idade;
 	private int nivelDor;
+	private String gravidade;
 	private String nome;
 	private String remediosProibidos;
 	private String especialidadeNecessaria;
 	private String quarto;
-	private int gravidade;
 	private String examesProibidos;
-	private String medicoAlocado;
+	private Medique medicoAlocado;
 	private ArrayList<Laudo> listaDeLaudos = new ArrayList<Laudo>();
 	private ArrayList<Exame> listaDeExames = new ArrayList<Exame>();
 	private ArrayList<Atestado> listaDeAtestados = new ArrayList<Atestado>();
+	private ArrayList<Receita> listaDeReceitas = new ArrayList<Receita>();
 	private LocalDateTime contador = LocalDateTime.now();
 	// Construtor
-	public Paciente(int cpf, int idade, int nivelDor, String nome, String remediosProibidos,
-			String especialidadeNecessaria, String quarto, String examesProibidos, String medicoAlocado,
-			ArrayList<Laudo> listaDeLaudos, ArrayList<Exame> listaDeExames, ArrayList<Atestado> listaDeAtestados) {
+	public Paciente(String cPF, int idade, int nivelDor, int gravidade, String nome, String remediosProibidos,
+			String especialidadeNecessaria, String examesProibidos, Medique medicoAlocado,
+			ArrayList<Laudo> listaDeLaudos, ArrayList<Exame> listaDeExames, ArrayList<Atestado> listaDeAtestados,
+			ArrayList<Receita> listaDeReceitas, LocalDateTime contador) {
 		super();
-		this.cpf = cpf;
+		CPF = cPF;
 		this.idade = idade;
 		this.nivelDor = nivelDor;
 		this.nome = nome;
 		this.remediosProibidos = remediosProibidos;
 		this.especialidadeNecessaria = especialidadeNecessaria;
-		this.quarto = quarto;
 		this.examesProibidos = examesProibidos;
 		this.medicoAlocado = medicoAlocado;
 		this.listaDeLaudos = listaDeLaudos;
 		this.listaDeExames = listaDeExames;
 		this.listaDeAtestados = listaDeAtestados;
+		this.listaDeReceitas = listaDeReceitas;
+		this.contador = contador;
+		gerarGravidade();
 	}
 	// Getters e Setters
 	public int getIdade() {
 		return idade;
 	}
-	
 	public void setIdade(int idade) {
 		this.idade = idade;
 	}
@@ -76,7 +80,7 @@ public abstract class Paciente implements Cadastrable{
 	public void setQuarto(String quarto) {
 		this.quarto = quarto;
 	}
-	public int getGravidade() {
+	public String getGravidade() {
 		return gravidade;
 	}
 	public String getExamesProibidos() {
@@ -85,14 +89,14 @@ public abstract class Paciente implements Cadastrable{
 	public void setExamesProibidos(String examesProibidos) {
 		this.examesProibidos = examesProibidos;
 	}
-	public String getMedicoAlocado() {
+	public Medique getMedicoAlocado() {
 		return medicoAlocado;
 	}
-	public void setMedicoAlocado(String medicoAlocado) {
+	public void setMedicoAlocado(Medique medicoAlocado) {
 		this.medicoAlocado = medicoAlocado;
 	}
-	public int getCpf() {
-		return cpf;
+	public String getCPF() {
+		return CPF;
 	}
 	public ArrayList<Laudo> getListaDeLaudos() {
 		return listaDeLaudos;
@@ -112,31 +116,37 @@ public abstract class Paciente implements Cadastrable{
 	public void setContador(LocalDateTime contador) {
 		this.contador = contador;
 	}
+	public ArrayList<Atestado> getListaDeAtestados() {
+		return listaDeAtestados;
+	}
+	public void setListaDeAtestados(ArrayList<Atestado> listaDeAtestados) {
+		this.listaDeAtestados = listaDeAtestados;
+	}
+	public ArrayList<Receita> getListaDeReceitas() {
+		return listaDeReceitas;
+	}
+	public void setListaDeReceitas(ArrayList<Receita> listaDeReceitas) {
+		this.listaDeReceitas = listaDeReceitas;
+	}
 	// Métodos não abstratos
 	public void gerarGravidade() {
-		// Usando um artigo presente em https://l1nq.com/QK0o5 temos essas informações
-		// Falta estabelecer a lógica de duration na interface
-		Scanner leitura = new Scanner(System.in);
-		System.out.print("Digite a gravidade do paciente");
-		this.gravidade = leitura.nextInt();
-		leitura.close();
-		switch (gravidade) {
-			case 1:
-				System.out.println("Necessita Tratamento imediato, risco de morte!");
-				contador = LocalDateTime.now().plusMinutes(5);
-			case 2:
-				System.out.println("Risco de morte! Necessita de tratamento em até 15 minutos");
-				contador = LocalDateTime.now().plusMinutes(15);
-			case 3:
-				System.out.println("Urgência! Necessita de tratamento em até 15 minutos");
-				contador = LocalDateTime.now().plusMinutes(15);
-			case 4:
-				System.out.println("Pouco urgente. Necessita de tratamento em até 30 minutos");
-				contador = LocalDateTime.now().plusMinutes(30);
-			case 5:
-				System.out.println("Não urgente. Necessita de tratamento em até 30 minutos");
-				contador = LocalDateTime.now().plusMinutes(30);
+		if (nivelDor >= 7) {
+			gravidade = "vermelho";
+			medicoAlocado.gerarAtestado(CPF, 10, LocalDate.now());
+			System.out.println("o médico " + medicoAlocado.getNome() + "deve gerar um laudo para esse paciente");
+			try {
+				medicoAlocado.solicitarExame(CPF, "Exame de Sangue", 25, LocalDate.now());
+			} catch (ExameIncompativelException e) {
+				System.out.println("Exame Incompatível");
+			}
+		} else if (nivelDor < 7 && nivelDor >= 4) {
+			gravidade = "amarelo";
+			medicoAlocado.gerarAtestado(CPF, 5, LocalDate.now());
+			System.out.println("o médico " + medicoAlocado.getNome() + "deve gerar uma receita para esse paciente");
+		} else if (nivelDor < 4) {
+			gravidade = "verde";
 		}
+		
 	}
 	public boolean listarLaudos() {
 		if (listaDeLaudos.size() == 0) {
@@ -164,5 +174,24 @@ public abstract class Paciente implements Cadastrable{
 			System.out.println(listaDeExames.get(i));
 		}
 		return true;
+	}
+	public boolean listarReceitas() {
+		if (listaDeReceitas.size() == 0) {
+			return false;
+		}
+		for (int i = 0; i < listaDeReceitas.size(); i++) {
+			System.out.println(listaDeReceitas.get(i));
+		}
+		return true;
+	}
+	
+	public boolean removerRemedio(String remedio) {
+		for (Receita i: listaDeReceitas) {
+			if (i.getRemedio().equals(remedio)) {
+				listaDeReceitas.remove(i);
+				return true;
+			}
+		}
+		return false;
 	}
 }
