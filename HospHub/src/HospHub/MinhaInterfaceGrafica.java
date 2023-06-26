@@ -1,3 +1,4 @@
+package HospHub;
 import javax.swing.*;
 import java.io.File;
 import java.io.FileWriter;
@@ -739,8 +740,8 @@ public class MinhaInterfaceGrafica  {
 						    "Inserir cpf valido!");
 			   }
 			  else {
-		   new PacienteSus(cpfstr, Integer.parseInt(idadestr), Integer.parseInt(dorstr), nome, remediostr,
-				   especialidadestr,  examesstr, Integer.parseInt(susstr), hospital);
+		  new PacienteSus(cpfstr, Integer.parseInt(idadestr), Integer.parseInt(dorstr), nomestr, remediostr,
+				  especialidadestr,  examesstr, hospital, Integer.parseInt(susstr));
 		   System.out.println("\nNome:" + nomestr + "\nIdade:" + idadestr + " anos" + "\nExames:" + examesstr);
 		   troca(2);}
     }}}
@@ -787,8 +788,9 @@ public class MinhaInterfaceGrafica  {
 				   JOptionPane.showMessageDialog(frame2,
 					    "Inserir cnpj valido!");
 			   }
+			   else
 			   {
-			  hospital = new Hospital(nome, cnpj, telefone, email, endereco);
+			  hospital = new Hospital(nomestr, cnpjstr, telefonestr, emailstr, enderecostr);
 		   System.out.println("\nNome:" + nomestr + "\nTelefone:" +  telefonestr + "\nEmail:" + emailstr);
 		   troca(1);}}
     }}
@@ -857,8 +859,8 @@ public class MinhaInterfaceGrafica  {
 							    "Inserir cpf valido!");
 				   }
 				   else {
-					   new PacienteParticular(cpfstr, Integer.parseInt(idadestr), Integer.parseInt(dorstr), nome, remediostr,
-							   especialidadestr,  examesstr, conveniostr, Integer.parseInt(idstr), hospital);
+					   new PacienteParticular(cpfstr, Integer.parseInt(idadestr), Integer.parseInt(dorstr), nomestr, remediostr,
+							   especialidadestr,  examesstr,  hospital, conveniostr, Integer.parseInt(idstr));
 		   System.out.println("\nNome:" + nomestr + "\nIdade:" + idadestr + " anos" + "\nExames:" + examesstr);
 		   troca(4);}
     }}}
@@ -898,5 +900,10 @@ public class MinhaInterfaceGrafica  {
 	   }
 	   }
    }
-   
+   public static void main(String[] args) {
+       
+   	new MinhaInterfaceGrafica(new Hospital( "nome",  "cnpj", "telefone", "email", "endereco"));
+   	
+   	
+   }
 }
