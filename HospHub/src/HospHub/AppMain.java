@@ -231,7 +231,7 @@ public class AppMain {
             Medique medico = (Medique) profissional;
             medico.gerarAtestado(cpf, dias, dataFormatada);
         } else {
-            System.out.println("O profissional solicitado não é um médico, logo não pode gerar um laudo");
+            System.out.println("O profissional solicitado não é um médico, logo não pode gerar um atestado");
         }
     }
 
