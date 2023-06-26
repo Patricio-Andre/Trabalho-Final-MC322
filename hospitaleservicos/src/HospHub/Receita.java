@@ -1,4 +1,4 @@
-package hospitaleservicos;
+package HospHub;
 import java.util.LinkedList;
 import java.time.LocalDate;
 import java.io.BufferedWriter;

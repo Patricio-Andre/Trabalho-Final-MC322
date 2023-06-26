@@ -1,8 +1,7 @@
-package hospitaleservicos;
+package HospHub;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
-import java.time.Clock;
 
 public class Internacao {
     private String id;

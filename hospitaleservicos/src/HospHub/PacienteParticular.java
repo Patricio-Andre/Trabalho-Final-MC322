@@ -1,4 +1,4 @@
-package hospitaleservicos;
+package HospHub;
 import java.util.ArrayList;
 
 public class PacienteParticular extends Paciente{

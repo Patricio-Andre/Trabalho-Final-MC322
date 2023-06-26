@@ -1,4 +1,4 @@
-package hospitaleservicos;
+package HospHub;
 
 public interface Cadastrable {
     boolean cadastrar(Object partedalista) throws Exception;

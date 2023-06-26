@@ -1,5 +1,4 @@
-package hospitaleservicos;
-import java.util.ArrayList;
+package HospHub;
 import java.util.HashMap;
 import java.lang.StringBuilder;
 import java.io.File;

@@ -1,4 +1,4 @@
-package hospitaleservicos;
+package HospHub;
 
 public class AppMain {
 

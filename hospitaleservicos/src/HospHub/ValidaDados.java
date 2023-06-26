@@ -1,5 +1,5 @@
 
-package hospitaleservicos;
+package HospHub;
 
 import java.util.ArrayList;
 import java.util.Arrays;

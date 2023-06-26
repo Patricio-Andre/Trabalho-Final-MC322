@@ -1,24 +1,24 @@
-package hospitaleservicos;
+package HospHub;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 
-public class Atestado {
+public class Laudo {
     private Medique medique;
-    private int diasAusencia;
+    private String doenca;
     private LocalDate dataAtendimento;
-    private static int numeroArquivo;
     private Paciente paciente;
+    private static int numeroArquivo = 0;
 
-    public Atestado(Medique medique, int diasAusencia, LocalDate dataAtendimento, Paciente paciente) {
+    public Laudo(Medique medique, String doenca, LocalDate dataAtendimento, Paciente paciente) {
 		super();
 		this.medique = medique;
-		this.diasAusencia = diasAusencia;
+		this.doenca = doenca;
 		this.dataAtendimento = dataAtendimento;
 		this.paciente = paciente;
-		this.paciente.getListaDeAtestados().add(this);
+		this.paciente.getListaDeLaudos().add(this);
 		salvarArquivo();
         defineNumeroArquivo();
 	}
@@ -28,11 +28,11 @@ public class Atestado {
     public void setMedique(Medique medique) {
         this.medique = medique;
     }
-    public int getDiasAusencia() {
-        return diasAusencia;
+    public String getDoenca() {
+        return doenca;
     }
-    public void setDiasAusencia(int diasAusencia) {
-        this.diasAusencia = diasAusencia;
+    public void setDoenca(String doenca) {
+        this.doenca = doenca;
     }
     public LocalDate getDataAtendimento() {
         return dataAtendimento;
@@ -40,25 +40,18 @@ public class Atestado {
     public void setDataAtendimento(LocalDate dataAtendimento) {
         this.dataAtendimento = dataAtendimento;
     }
-    
     public Paciente getPaciente() {
 		return paciente;
 	}
 	public void setPaciente(Paciente paciente) {
 		this.paciente = paciente;
 	}
-	public String toString(){
-        return "e medique " + medique + " concede " + diasAusencia + " dias de ausencia a partir de " + dataAtendimento;
-    }
-    
-    
-    
-    public void defineNumeroArquivo() {
+	public void defineNumeroArquivo() {
     	// Garante que todo arquivo terá um nome diferente;
     	boolean achou = false;
     	for (int i = 0; i < numeroArquivo; i++) {
-    		String diretorioPrincipal = System.getProperty("user.dir") + File.separator + "atestados";
-            String caminhoArquivo = diretorioPrincipal + File.separator + "Atestados_" + paciente.getCPF() + "_" + numeroArquivo + ".txt";
+    		String diretorioPrincipal = System.getProperty("user.dir") + File.separator + "laudos";
+    		String caminhoArquivo = diretorioPrincipal + File.separator + "Laudo_" + paciente.getCPF() + "_" + numeroArquivo + ".txt";
             File diretorio = new File(diretorioPrincipal);
             
             // Verifica se o diretório existe e é um diretório válido
@@ -78,8 +71,8 @@ public class Atestado {
         }
     }
     public void salvarArquivo() {
-    	String diretorioPrincipal = System.getProperty("user.dir") + File.separator + "atestados";
-        String caminhoArquivo = diretorioPrincipal + File.separator + "Atestados_" + paciente.getCPF() + "_" + numeroArquivo + ".txt";
+    	String diretorioPrincipal = System.getProperty("user.dir") + File.separator + "laudos";
+        String caminhoArquivo = diretorioPrincipal + File.separator + "Laudo_" + paciente.getCPF() + "_" + numeroArquivo + ".txt";
         BufferedWriter writer = null;
         try {
         	// Cria o diretório de exames caso não exista
@@ -89,14 +82,15 @@ public class Atestado {
             }
             // Cria o arquivo no diretório relativo ao programa
             writer = new BufferedWriter(new FileWriter(caminhoArquivo));
-            writer.write("Atestado médico");
+            writer.write("Laudo médico");
             writer.newLine();
-            writer.write("Paciente: " + paciente.getNome());
+            writer.write("Nome do paciente: " + paciente.getNome());
             writer.newLine();
-            writer.write("Dias ausência" + diasAusencia);
+            writer.write("CPF: " + paciente.getCPF());
             writer.newLine();
-            writer.write("Data do atendimento: " + dataAtendimento);
+            writer.write("Data do Laudo: " + dataAtendimento);
             writer.newLine();
+            writer.write("Doença: " + doenca);
             for (int i = 0; i < 8; i++) {
             	writer.newLine();
             }
@@ -105,5 +99,9 @@ public class Atestado {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    public String toString(){
+        return " e medique " + medique + " atesta que e paciente possui a doenca " + doenca + " conforme o atendimento da data " + dataAtendimento;
     }
 }

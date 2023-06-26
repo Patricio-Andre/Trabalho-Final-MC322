@@ -1,4 +1,4 @@
-package hospitaleservicos;
+package HospHub;
 
 import java.time.LocalTime;
 
