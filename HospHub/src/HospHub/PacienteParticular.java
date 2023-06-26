@@ -1,5 +1,4 @@
 package HospHub;
-import java.util.ArrayList;
 
 public class PacienteParticular extends Paciente{
 	private String convenio;

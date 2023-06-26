@@ -1,5 +1,4 @@
 package HospHub;
-import java.util.ArrayList;
 
 public class PacienteSus  extends Paciente{
 	private final int numeroSUS;
