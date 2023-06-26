@@ -155,7 +155,7 @@ public class AppMain {
         String cpf = in.nextLine();
         System.out.println("Insira o valor do exame");
         double valor = in.nextDouble();
-        System.out.println("Insira a data do examen");
+        System.out.println("Insira a data do exame");
         String data = in.nextLine();
         boolean dataEhValida = ValidaDados.validaData(data);
         while (!dataEhValida) {
@@ -164,7 +164,7 @@ public class AppMain {
             dataEhValida = ValidaDados.validaData(data);
         }
         LocalDate dataFormatada = LocalDate.parse(data, formatter);
-        System.out.println("Informe o registro do profissional da saude");
+        System.out.println("Informe o registro do profissional da saude que pregetende marcar o exame");
         String registro = in.nextLine();
         ProfissionalSaude profissional = hospital.buscaProfissionalSaude(registro);
         if (profissional instanceof Medique) {
@@ -184,7 +184,55 @@ public class AppMain {
     }
 
     public static void gerarLaudo(Scanner in, Hospital hospital) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        System.out.println("Informe o registro do profissional da saude que pretende gerar o laudo");
+        String registro = in.nextLine();
+        System.out.println("Insira o cpf do paciente");
+        String cpf = in.nextLine();
+        System.out.println("Informe a doença do paciente");
+        String doenca = in.nextLine();
+        System.out.println("Insira a data do atendimento");
+        String data = in.nextLine();
+        boolean dataEhValida = ValidaDados.validaData(data);
+        while (!dataEhValida) {
+            System.out.println("data invalida, tente novamente");
+            data = in.nextLine();
+            dataEhValida = ValidaDados.validaData(data);
+        }
+        LocalDate dataFormatada = LocalDate.parse(data, formatter);
+        ProfissionalSaude profissional = hospital.buscaProfissionalSaude(registro);
+        if (profissional instanceof Medique) {
+            Medique medico = (Medique) profissional;
+            medico.gerarLaudo(cpf, doenca, dataFormatada);
+        } else {
+            System.out.println("O profissional solicitado não é um médico, logo não pode gerar um laudo");
+        }
+    }
 
+    public static void gerarAtestado(Scanner in, Hospital hospital) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        System.out.println("Informe o registro do profissional da saude que pretende gerar o laudo");
+        String registro = in.nextLine();
+        System.out.println("Insira o cpf do paciente");
+        String cpf = in.nextLine();
+        System.out.println("Informe a quantidade de dias do atestado");
+        int dias = in.nextInt();
+        System.out.println("Insira a data do atendimento");
+        String data = in.nextLine();
+        boolean dataEhValida = ValidaDados.validaData(data);
+        while (!dataEhValida) {
+            System.out.println("data invalida, tente novamente");
+            data = in.nextLine();
+            dataEhValida = ValidaDados.validaData(data);
+        }
+        LocalDate dataFormatada = LocalDate.parse(data, formatter);
+        ProfissionalSaude profissional = hospital.buscaProfissionalSaude(registro);
+        if (profissional instanceof Medique) {
+            Medique medico = (Medique) profissional;
+            medico.gerarAtestado(cpf, dias, dataFormatada);
+        } else {
+            System.out.println("O profissional solicitado não é um médico, logo não pode gerar um laudo");
+        }
     }
 
     public static void main(String args[]) {
@@ -209,6 +257,7 @@ public class AppMain {
                     gerarLaudo(entrada, hospital);
                     break;
                 case 5:
+                    gerarAtestado(entrada, hospital);
                     break;
                 case 0:
                     break;
