@@ -6,12 +6,10 @@ public class PacienteParticular extends Paciente{
 	private final int idConvenio;
 	private double custo;
 	// Construtor
-	public PacienteParticular(String cPF, int idade, int nivelDor, int gravidade, String nome, String remediosProibidos,
-			String especialidadeNecessaria, String examesProibidos, Medique medicoAlocado,
-			ArrayList<Laudo> listaDeLaudos, ArrayList<Exame> listaDeExames, ArrayList<Atestado> listaDeAtestados,
-			ArrayList<Receita> listaDeReceitas, String convenio, int idConvenio) {
-		super(cPF, idade, nivelDor, gravidade, nome, remediosProibidos, especialidadeNecessaria, examesProibidos,
-				medicoAlocado, listaDeLaudos, listaDeExames, listaDeAtestados, listaDeReceitas);
+	public PacienteParticular(String cPF, int idade, int nivelDor, String nome, String remediosProibidos,
+			String especialidadeNecessaria, String examesProibidos, Hospital hospital, String convenio,
+			int idConvenio) {
+		super(cPF, idade, nivelDor, nome, remediosProibidos, especialidadeNecessaria, examesProibidos, hospital);
 		this.convenio = convenio;
 		this.idConvenio = idConvenio;
 	}
