@@ -900,10 +900,4 @@ public class MinhaInterfaceGrafica  {
 	   }
 	   }
    }
-   public static void main(String[] args) {
-       
-   	new MinhaInterfaceGrafica(new Hospital( "nome",  "cnpj", "telefone", "email", "endereco"));
-   	
-   	
-   }
 }
