@@ -10,6 +10,7 @@ import javax.swing.filechooser.FileFilter.*;
 
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import java.awt.CheckboxGroup;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -24,14 +25,18 @@ public class MinhaInterfaceGrafica  {
 	 JFrame frame5;
 	 ButtonGroup buttonGroup;
 	 ButtonGroup buttonGroup2;
+     ButtonGroup gp_;
+     ButtonGroup gp;
+     Hospital hospital;
     
-    MinhaInterfaceGrafica(){
+    MinhaInterfaceGrafica(Hospital hospital){
     	frame0 = new JFrame();
     	frame1 = new JFrame();
         frame2 = new JFrame();
         frame3 = new JFrame();
         frame4 = new JFrame();
         frame5 = new JFrame();
+        this.hospital = hospital;
         
         JLabel txt = new JLabel("");
         
@@ -75,6 +80,10 @@ public class MinhaInterfaceGrafica  {
         JMenuItem itemLaudo = new JMenuItem("Pegar laudos");
         itemLaudo.addActionListener(new Troca_frame5());
         menuArquivo2.add(itemLaudo);
+        
+        JMenuItem itemReceita = new JMenuItem("Pegar receita");
+        itemReceita.addActionListener(new Troca_frame5());
+        menuArquivo2.add(itemReceita);
     
         menuBar.add(menuArquivo);
         menuBar.add(menuArquivo2);
@@ -97,7 +106,7 @@ public class MinhaInterfaceGrafica  {
         JTextField textField05 = new JTextField(24);
         
         JButton button0 = new JButton("Enviar");
-        button0.addActionListener(new Enter_Hospital(textField0, textField02, textField04, textField03, textField05));
+        button0.addActionListener(new Enter_Hospital(textField0, textField02, textField04, textField03, textField05, hospital));
       
         
         panel0.add(label0);
@@ -149,12 +158,10 @@ public class MinhaInterfaceGrafica  {
         
         frame2.setTitle("Paciente INFO");
         frame0.setTitle("Gerar hospital");
-        frame2.setSize(350, 350);
+        frame2.setSize(350, 380);
         
 
-  
-        
-        // Criação de botoes
+
         JButton button = new JButton("sair");
         JButton button2 = new JButton("Enviar");
 
@@ -204,14 +211,13 @@ public class MinhaInterfaceGrafica  {
         buttonGroup2.add(tres2);
         buttonGroup2.add(quatro2);
         buttonGroup2.add(cinco2);
-        buttonGroup.add(seis2);
-        buttonGroup.add(sete2);
-        buttonGroup.add(oito2);
-        buttonGroup.add(nove2);
-        buttonGroup.add(dez2);
+        buttonGroup2.add(seis2);
+        buttonGroup2.add(sete2);
+        buttonGroup2.add(oito2);
+        buttonGroup2.add(nove2);
+        buttonGroup2.add(dez2);
         
         
-//textfields e labels
         JLabel label = new JLabel("Nome:");
         JTextField textField = new JTextField(23);
         JLabel label2 = new JLabel("Idade:");
@@ -221,26 +227,20 @@ public class MinhaInterfaceGrafica  {
         JLabel label4 = new JLabel("Exames evitados:");
         JTextField textField4 = new JTextField(16);
         JLabel label5 = new JLabel("Especiaidade do medico:");
-        JTextField textField5 = new JTextField(11);
         JLabel label6 = new JLabel("Numero do SUS:");
         JTextField textField6 = new JTextField(17);
         JLabel label7 = new JLabel("CPF:");
         JTextField textField7 = new JTextField(24);
         JLabel label8 = new JLabel("NÍvel de dor:");
-        //JTextField textField8 = new JTextField(16);
-     //   JLabel label9 = new JLabel("Gravidade:");
-        //JTextField textField9 = new JTextField(17);
-        button2.addActionListener(new Enter_SUS(textField, textField2, textField3, textField4, textField5, textField6, textField7));
+  
+        button2.addActionListener(new Enter_SUS(textField, textField2, textField3, textField7, textField4, textField6));
         
        
         
-        // Criação do layout
         SpringLayout layout = new SpringLayout();
  
         JPanel panel = new JPanel(layout);
         
-       // layout.putConstraint(SpringLayout.NORTH, label9, 18, SpringLayout.SOUTH, label8);
-       // layout.putConstraint(SpringLayout.WEST, label9, 0, SpringLayout.WEST, label);
        
         layout.putConstraint(SpringLayout.NORTH, um, 15, SpringLayout.SOUTH, label8);
         layout.putConstraint(SpringLayout.WEST, um, 20, SpringLayout.WEST, panel);
@@ -257,9 +257,6 @@ public class MinhaInterfaceGrafica  {
         
         layout.putConstraint(SpringLayout.NORTH, cinco, 15, SpringLayout.SOUTH, label8);
         layout.putConstraint(SpringLayout.WEST, cinco, 140, SpringLayout.WEST, panel);
-        
-      //  layout.putConstraint(SpringLayout.NORTH, label9, 18, SpringLayout.SOUTH, label8);
-       // layout.putConstraint(SpringLayout.WEST, label9, 0, SpringLayout.WEST, panel);
         
         layout.putConstraint(SpringLayout.NORTH, seis, 15, SpringLayout.SOUTH, label8);
         layout.putConstraint(SpringLayout.WEST, seis, 170, SpringLayout.WEST, panel);
@@ -283,29 +280,19 @@ public class MinhaInterfaceGrafica  {
         layout.putConstraint(SpringLayout.EAST, button2, 0, SpringLayout.EAST, textField);
         layout.putConstraint(SpringLayout.EAST, button, 0, SpringLayout.EAST, label6);
         layout.putConstraint(SpringLayout.WEST, textField7, 6, SpringLayout.EAST, label7);
-        //layout.putConstraint(SpringLayout.NORTH, textField8, -2, SpringLayout.NORTH, label8);
-       // layout.putConstraint(SpringLayout.EAST, textField8, 0, SpringLayout.EAST, textField);
         layout.putConstraint(SpringLayout.NORTH, textField7, -2, SpringLayout.NORTH, label7);
         layout.putConstraint(SpringLayout.EAST, textField7, 0, SpringLayout.EAST, textField);
         layout.putConstraint(SpringLayout.NORTH, textField6, -2, SpringLayout.NORTH, label6);
         layout.putConstraint(SpringLayout.EAST, textField6, 0, SpringLayout.EAST, textField);
-        layout.putConstraint(SpringLayout.NORTH, textField5, 0, SpringLayout.NORTH, label5);
-        layout.putConstraint(SpringLayout.EAST, textField5, 0, SpringLayout.EAST, textField);
         layout.putConstraint(SpringLayout.NORTH, textField4, -2, SpringLayout.NORTH, label4);
         layout.putConstraint(SpringLayout.WEST, textField4, 10, SpringLayout.EAST, label4);
         layout.putConstraint(SpringLayout.EAST, textField4, 0, SpringLayout.EAST, textField);
         layout.putConstraint(SpringLayout.EAST, textField3, 0, SpringLayout.EAST, textField); 
-       // layout.putConstraint(SpringLayout.EAST, textField9, -18, SpringLayout.EAST, panel);
         layout.putConstraint(SpringLayout.SOUTH, button, -10, SpringLayout.SOUTH, panel);
         frame2.setContentPane(panel);
-        
-  
-       
-        
-        
-        
-        
-        // Adicionando os componentes ao painel com o layout SpringLayout
+
+     
+
         panel.add(label);
         panel.add(textField);
         panel.add(label2);
@@ -315,15 +302,11 @@ public class MinhaInterfaceGrafica  {
         panel.add(label4);
         panel.add(textField4);
         panel.add(label5);
-        panel.add(textField5);
         panel.add(label6);
         panel.add(textField6);
         panel.add(label7);
         panel.add(textField7);
         panel.add(label8);
-        //panel.add(textField8);
-       // panel.add(label9);
-       // panel.add(textField9);
         panel.add(button);
         panel.add(button2);
         panel.add(um);
@@ -337,9 +320,7 @@ public class MinhaInterfaceGrafica  {
         panel.add(nove);
         panel.add(dez);
         
-       
-
-        // Configurações de posicionamento dos componentes
+     
         layout.putConstraint(SpringLayout.WEST, label, 10, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, label, 10, SpringLayout.NORTH, panel);
         layout.putConstraint(SpringLayout.WEST, textField, 10, SpringLayout.EAST, label);
@@ -362,13 +343,13 @@ public class MinhaInterfaceGrafica  {
         layout.putConstraint(SpringLayout.NORTH, label5, 130, SpringLayout.NORTH, panel);
         
         layout.putConstraint(SpringLayout.WEST, label6, 10, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, label6, 160, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.NORTH, label6, 190, SpringLayout.NORTH, panel);
         
         layout.putConstraint(SpringLayout.WEST, label7, 10, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, label7, 190, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.NORTH, label7, 220, SpringLayout.NORTH, panel);
         
         layout.putConstraint(SpringLayout.WEST, label8, 130, SpringLayout.WEST, panel);
-        layout.putConstraint(SpringLayout.NORTH, label8, 220, SpringLayout.NORTH, panel);
+        layout.putConstraint(SpringLayout.NORTH, label8, 250, SpringLayout.NORTH, panel);
         
         
         frame2.setVisible(false);
@@ -382,6 +363,7 @@ public class MinhaInterfaceGrafica  {
 
         button_.addActionListener(new Troca_frame4());
         
+        
 
         
       
@@ -393,71 +375,69 @@ public class MinhaInterfaceGrafica  {
         JTextField textField3_ = new JTextField(16);
         JLabel label4_ = new JLabel("ID do convenio:");
         JTextField textField4_ = new JTextField(19);
-        JLabel label5_ = new JLabel("Especiaidade do medico:");
-        JTextField textField5_ = new JTextField(11);
-        JLabel label6_ = new JLabel("Exames evitados:");
-        JTextField textField6_ = new JTextField(16);
+        JLabel label5_ = new JLabel("Exames evitados:");
+        JTextField textField5_ = new JTextField(16);
+        JLabel label6_ = new JLabel("Especialidade do medico:");
+       // JTextField textField6_ = new JTextField(16);
         JLabel label7_ = new JLabel("CPF:");
         JTextField textField7_ = new JTextField(24);
         JLabel label8_ = new JLabel("Convenio:");
         JTextField textField8_ = new JTextField(21);
         JLabel label10_ = new JLabel("Nivel de dor:");
-       // JTextField textField10_ = new JTextField(16);
-       // JLabel label11_ = new JLabel("ID do convenio:");
-        //JTextField textField11_ = new JTextField(16);
-        
-        // Criação do layout
+
+        button2_.addActionListener(new Enter_Particular(textField_, textField2_, textField3_, textField7_,textField5_, textField8_, textField4_ ));
+
+
         SpringLayout layout2 = new SpringLayout();
+ 
+        layout2.putConstraint(SpringLayout.NORTH, label6_, 0, SpringLayout.NORTH, textField7_);
+        layout2.putConstraint(SpringLayout.NORTH, label7_, 2, SpringLayout.NORTH, textField7_);
+        layout2.putConstraint(SpringLayout.SOUTH, label7_, 44, SpringLayout.NORTH, textField7_);
+        layout2.putConstraint(SpringLayout.SOUTH, label6_, -34, SpringLayout.NORTH, textField7_);
+        layout2.putConstraint(SpringLayout.WEST, textField7_, 0, SpringLayout.WEST, textField_);
+        layout2.putConstraint(SpringLayout.SOUTH, textField7_, -12, SpringLayout.NORTH, textField8_);
+        layout2.putConstraint(SpringLayout.EAST, textField7_, 0, SpringLayout.EAST, textField_);
+        layout2.putConstraint(SpringLayout.NORTH, dois2, 25, SpringLayout.SOUTH, label8_);
+        layout2.putConstraint(SpringLayout.NORTH, um2, 25, SpringLayout.SOUTH, label8_);
+        layout2.putConstraint(SpringLayout.NORTH, label5_, 11, SpringLayout.SOUTH, textField4_);
+        layout2.putConstraint(SpringLayout.NORTH, label8_, 2, SpringLayout.NORTH, textField8_);
+        layout2.putConstraint(SpringLayout.NORTH, dez2, 23, SpringLayout.SOUTH, textField8_);
+        layout2.putConstraint(SpringLayout.NORTH, nove2, 23, SpringLayout.SOUTH, textField8_);
+        layout2.putConstraint(SpringLayout.NORTH, oito2, 23, SpringLayout.SOUTH, textField8_);
+        layout2.putConstraint(SpringLayout.NORTH, tres2, 23, SpringLayout.SOUTH, textField8_);
+        layout2.putConstraint(SpringLayout.SOUTH, textField8_, -2, SpringLayout.NORTH, label10_);
+        layout2.putConstraint(SpringLayout.EAST, textField8_, 0, SpringLayout.EAST, textField_);
+        layout2.putConstraint(SpringLayout.NORTH, sete2, 6, SpringLayout.SOUTH, label10_);
+        layout2.putConstraint(SpringLayout.NORTH, seis2, 6, SpringLayout.SOUTH, label10_);
+        layout2.putConstraint(SpringLayout.NORTH, cinco2, 6, SpringLayout.SOUTH, label10_);
+        layout2.putConstraint(SpringLayout.SOUTH, label10_, -6, SpringLayout.NORTH, quatro2);
         JPanel panel2 = new JPanel(layout2);
+        layout2.putConstraint(SpringLayout.SOUTH, label2_, -317, SpringLayout.SOUTH, panel2);
+        layout2.putConstraint(SpringLayout.NORTH, label3_, 70, SpringLayout.NORTH, panel2);
+        layout2.putConstraint(SpringLayout.NORTH, textField2_, 40, SpringLayout.NORTH, panel2);
+        layout2.putConstraint(SpringLayout.WEST, textField_, 65, SpringLayout.WEST, panel2);
+        layout2.putConstraint(SpringLayout.WEST, label8_, 10, SpringLayout.WEST, panel2);
+        layout2.putConstraint(SpringLayout.WEST, label7_, 10, SpringLayout.WEST, panel2);
+        layout2.putConstraint(SpringLayout.WEST, label6_, 10, SpringLayout.WEST, panel2);
+        layout2.putConstraint(SpringLayout.WEST, label5_, 10, SpringLayout.WEST, panel2);
+        layout2.putConstraint(SpringLayout.WEST, label4_, 10, SpringLayout.WEST, panel2);
+        layout2.putConstraint(SpringLayout.WEST, label3_, 10, SpringLayout.WEST, panel2);
+        layout2.putConstraint(SpringLayout.NORTH, textField_, 10, SpringLayout.NORTH, panel2);
+        layout2.putConstraint(SpringLayout.NORTH, quatro2, 286, SpringLayout.NORTH, panel2);
+        layout2.putConstraint(SpringLayout.WEST, label10_, 127, SpringLayout.WEST, panel2);
         frame4.setContentPane(panel2); 
         
         layout2.putConstraint(SpringLayout.NORTH, textField3_, -2, SpringLayout.NORTH, label3_);
         layout2.putConstraint(SpringLayout.WEST, textField3_, 13, SpringLayout.EAST, label3_);
         layout2.putConstraint(SpringLayout.EAST, textField3_, 0, SpringLayout.EAST, textField_);
         layout2.putConstraint(SpringLayout.NORTH, button_, 0, SpringLayout.NORTH, button2_);
-       // layout2.putConstraint(SpringLayout.EAST, button_, 0, SpringLayout.EAST, label10_);
-        //layout2.putConstraint(SpringLayout.NORTH, button2_, 16, SpringLayout.SOUTH, textField11_);
-        //layout2.putConstraint(SpringLayout.EAST, textField11_, 0, SpringLayout.EAST, textField_);
-        layout2.putConstraint(SpringLayout.NORTH, label5_, 11, SpringLayout.SOUTH, textField4_);
         layout2.putConstraint(SpringLayout.EAST, textField4_, 0, SpringLayout.EAST, textField_);
-        layout2.putConstraint(SpringLayout.NORTH, label3_, 11, SpringLayout.SOUTH, textField2_);
         layout2.putConstraint(SpringLayout.EAST, textField2_, 0, SpringLayout.EAST, textField_);
-        //layout2.putConstraint(SpringLayout.WEST, textField11_, 6, SpringLayout.EAST, label11_);
-        //layout2.putConstraint(SpringLayout.NORTH, textField11_, -2, SpringLayout.NORTH, label11_);
-       // layout2.putConstraint(SpringLayout.WEST, label11_, 0, SpringLayout.WEST, label_);
-       // layout2.putConstraint(SpringLayout.NORTH, textField10_, 15, SpringLayout.SOUTH, textField7_);
-        layout2.putConstraint(SpringLayout.NORTH, textField8_, 11, SpringLayout.SOUTH, label7_);
-        layout2.putConstraint(SpringLayout.EAST, textField8_, 0, SpringLayout.EAST, textField_);
-     //   layout2.putConstraint(SpringLayout.NORTH, label8_, 15, SpringLayout.SOUTH, textField10_);
-        layout2.putConstraint(SpringLayout.WEST, label8_, 0, SpringLayout.WEST, label_);
-        layout2.putConstraint(SpringLayout.NORTH, label8_, 11, SpringLayout.SOUTH, label7_);
-       // layout2.putConstraint(SpringLayout.NORTH, label10_, 2, SpringLayout.NORTH, textField10_);
-      //  layout2.putConstraint(SpringLayout.WEST, label10_, 0, SpringLayout.WEST, label_);
-       // layout2.putConstraint(SpringLayout.EAST, textField10_, 0, SpringLayout.EAST, textField_);
         layout2.putConstraint(SpringLayout.WEST, textField4_, 25, SpringLayout.EAST, label4_);
-        layout2.putConstraint(SpringLayout.NORTH, textField5_, -2, SpringLayout.NORTH, label5_);
-        layout2.putConstraint(SpringLayout.EAST, textField5_, 0, SpringLayout.EAST, textField_);
         layout2.putConstraint(SpringLayout.NORTH, textField4_, 0, SpringLayout.NORTH, label4_);
-        layout2.putConstraint(SpringLayout.NORTH, textField7_, -2, SpringLayout.NORTH, label7_);
-        layout2.putConstraint(SpringLayout.WEST, textField7_, 0, SpringLayout.WEST, textField_);
-        layout2.putConstraint(SpringLayout.EAST, textField7_, 0, SpringLayout.EAST, textField_);
-        layout2.putConstraint(SpringLayout.WEST, textField6_, 11, SpringLayout.EAST, label6_);
         layout2.putConstraint(SpringLayout.WEST, textField2_, 10, SpringLayout.EAST, label2_);
-        layout2.putConstraint(SpringLayout.NORTH, label7_, 10, SpringLayout.SOUTH, label6_);
-        layout2.putConstraint(SpringLayout.WEST, label7_, 0, SpringLayout.WEST, label_);
-        layout2.putConstraint(SpringLayout.NORTH, textField6_, -2, SpringLayout.NORTH, label6_);
-        layout2.putConstraint(SpringLayout.NORTH, label6_, 6, SpringLayout.SOUTH, label5_);
-        layout2.putConstraint(SpringLayout.WEST, label5_, 0, SpringLayout.WEST, label_);
         layout2.putConstraint(SpringLayout.NORTH, label4_, 6, SpringLayout.SOUTH, label3_);
-        layout2.putConstraint(SpringLayout.WEST, label4_, 0, SpringLayout.WEST, label_);
-        layout2.putConstraint(SpringLayout.WEST, label3_, 0, SpringLayout.WEST, label_);
-        layout2.putConstraint(SpringLayout.NORTH, textField2_, -2, SpringLayout.NORTH, label2_);
-        layout2.putConstraint(SpringLayout.NORTH, label2_, 38, SpringLayout.SOUTH, label_);
-        layout2.putConstraint(SpringLayout.NORTH, textField_, -2, SpringLayout.NORTH, label_);
-        layout2.putConstraint(SpringLayout.WEST, textField_, 6, SpringLayout.EAST, label_);
         layout2.putConstraint(SpringLayout.EAST, button2_, -23, SpringLayout.EAST, panel2);
-        ///layout2.putConstraint(SpringLayout.NORTH, label11_, 292, SpringLayout.NORTH, panel2);
-       // layout2.putConstraint(SpringLayout.WEST, textField10_, 86, SpringLayout.WEST, panel2);
         layout2.putConstraint(SpringLayout.NORTH, label_, 10, SpringLayout.NORTH, panel2);
         layout2.putConstraint(SpringLayout.WEST, label_, 0, SpringLayout.WEST, panel2);
         
@@ -478,17 +458,12 @@ public class MinhaInterfaceGrafica  {
         panel2.add(label4_);
         panel2.add(textField4_);
         panel2.add(label5_);
-        panel2.add(textField5_);
         panel2.add(label6_);
-        panel2.add(textField6_);
         panel2.add(label7_);
         panel2.add(textField7_);
         panel2.add(label8_);
         panel2.add(textField8_);
         panel2.add(label10_);
-       // panel2.add(textField10_);
-       // panel2.add(label11_);
-       // panel2.add(textField11_);
         panel2.add(button_);
         panel2.add(button2_);
         panel2.add(um2);
@@ -501,14 +476,16 @@ public class MinhaInterfaceGrafica  {
         panel2.add(oito2);
         panel2.add(nove2);
         panel2.add(dez2);
-        
-        
+        panel2.add(textField5_);
 
         
         layout2.putConstraint(SpringLayout.WEST, label_, 10, SpringLayout.WEST, panel2);
         layout2.putConstraint(SpringLayout.NORTH, label_, 10, SpringLayout.NORTH, panel2);
         layout2.putConstraint(SpringLayout.WEST, textField_, 10, SpringLayout.EAST, label_);
         layout2.putConstraint(SpringLayout.NORTH, textField_, 10, SpringLayout.NORTH, panel2);
+
+        layout2.putConstraint(SpringLayout.WEST, textField5_, 10, SpringLayout.EAST, label5_);
+        layout2.putConstraint(SpringLayout.NORTH, textField5_, 130, SpringLayout.NORTH, panel2);
         
         layout2.putConstraint(SpringLayout.WEST, label2_, 10, SpringLayout.WEST, panel2);
         layout2.putConstraint(SpringLayout.NORTH, label2_, 40, SpringLayout.NORTH, panel2);
@@ -522,46 +499,19 @@ public class MinhaInterfaceGrafica  {
         
         layout2.putConstraint(SpringLayout.WEST, label5_, 10, SpringLayout.WEST, panel2);
         layout2.putConstraint(SpringLayout.NORTH, label5_, 130, SpringLayout.NORTH, panel2);
-        
-        layout2.putConstraint(SpringLayout.WEST, label6_, 10, SpringLayout.WEST, panel2);
         layout2.putConstraint(SpringLayout.NORTH, label6_, 160, SpringLayout.NORTH, panel2);
         
         layout2.putConstraint(SpringLayout.WEST, label7_, 10, SpringLayout.WEST, panel2);
         layout2.putConstraint(SpringLayout.NORTH, label7_, 190, SpringLayout.NORTH, panel2);
-        
-        layout2.putConstraint(SpringLayout.NORTH, um2, 20, SpringLayout.SOUTH, label10_);
         layout2.putConstraint(SpringLayout.WEST, um2, 20, SpringLayout.WEST, panel2);
-
-        
-        layout2.putConstraint(SpringLayout.NORTH, dois2, 20, SpringLayout.SOUTH, label10_);
         layout2.putConstraint(SpringLayout.WEST, dois2, 50, SpringLayout.WEST, panel2);
-
-        layout2.putConstraint(SpringLayout.NORTH, tres2, 20, SpringLayout.SOUTH, label10_);
         layout2.putConstraint(SpringLayout.WEST, tres2, 80, SpringLayout.WEST, panel2);
-        
-        layout2.putConstraint(SpringLayout.NORTH, quatro2, 20, SpringLayout.SOUTH, label10_);
         layout2.putConstraint(SpringLayout.WEST, quatro2, 110, SpringLayout.WEST, panel2);
-        
-        layout2.putConstraint(SpringLayout.NORTH, cinco2, 20, SpringLayout.SOUTH, label10_);
         layout2.putConstraint(SpringLayout.WEST, cinco2, 140, SpringLayout.WEST, panel2);
-        
-      //  layout.putConstraint(SpringLayout.NORTH, label9, 18, SpringLayout.SOUTH, label8);
-       // layout.putConstraint(SpringLayout.WEST, label9, 0, SpringLayout.WEST, panel);
-        
-        layout2.putConstraint(SpringLayout.NORTH, seis2, 20, SpringLayout.SOUTH, label10_);
         layout2.putConstraint(SpringLayout.WEST, seis2, 170, SpringLayout.WEST, panel2);
-
-        
-        layout2.putConstraint(SpringLayout.NORTH, sete2, 20, SpringLayout.SOUTH, label10_);
         layout2.putConstraint(SpringLayout.WEST, sete2, 200, SpringLayout.WEST, panel2);
-
-        layout2.putConstraint(SpringLayout.NORTH, oito2, 20, SpringLayout.SOUTH, label10_);
         layout2.putConstraint(SpringLayout.WEST, oito2, 230, SpringLayout.WEST, panel2);
-        
-        layout2.putConstraint(SpringLayout.NORTH, nove2, 20, SpringLayout.SOUTH, label10_);
         layout2.putConstraint(SpringLayout.WEST,nove2, 260, SpringLayout.WEST, panel2);
-        
-        layout2.putConstraint(SpringLayout.NORTH, dez2, 20, SpringLayout.SOUTH, label10_);
         layout2.putConstraint(SpringLayout.WEST, dez2, 290, SpringLayout.WEST, panel2);
         
         layout2.putConstraint(SpringLayout.WEST, button_, 10, SpringLayout.WEST, panel2);
@@ -569,11 +519,66 @@ public class MinhaInterfaceGrafica  {
         layout2.putConstraint(SpringLayout.NORTH, button_, 10, SpringLayout.SOUTH, dez2);
         layout2.putConstraint(SpringLayout.NORTH,  button2_, 10, SpringLayout.SOUTH, dez2);
         
-        layout2.putConstraint(SpringLayout.NORTH, label10_, 20, SpringLayout.SOUTH, label8_);
-        layout2.putConstraint(SpringLayout.WEST,label10_, 130, SpringLayout.WEST, panel2);
+        JCheckBox chckbxNewCheckBox = new JCheckBox("Neurologia");
+        layout2.putConstraint(SpringLayout.NORTH, chckbxNewCheckBox, -2, SpringLayout.NORTH, label6_);
+        layout2.putConstraint(SpringLayout.EAST, chckbxNewCheckBox, 0, SpringLayout.EAST, textField_);
+        panel2.add(chckbxNewCheckBox);
         
-        button2_.addActionListener(new Enter_Particular(textField_, textField2_, textField3, textField4_, textField5_, textField6_, textField7_, textField8_));
+        JCheckBox chckbxGastro = new JCheckBox("Pediatra");
+        layout2.putConstraint(SpringLayout.WEST, chckbxGastro, 0, SpringLayout.WEST, label10_);
+        layout2.putConstraint(SpringLayout.SOUTH, chckbxGastro, -6, SpringLayout.NORTH, textField7_);
+        layout2.putConstraint(SpringLayout.EAST, chckbxGastro, 0, SpringLayout.EAST, label10_);
+        panel2.add(chckbxGastro);
+        
+        JCheckBox chckbxCardiologia = new JCheckBox("Cardiologia");
+        layout2.putConstraint(SpringLayout.NORTH, chckbxGastro, 0, SpringLayout.NORTH, chckbxCardiologia);
+        layout2.putConstraint(SpringLayout.WEST, chckbxCardiologia, 0, SpringLayout.WEST, chckbxNewCheckBox);
+        layout2.putConstraint(SpringLayout.SOUTH, chckbxCardiologia, -6, SpringLayout.NORTH, textField7_);
+        panel2.add(chckbxCardiologia);
+        
+        JCheckBox chckbxGinecologia = new JCheckBox("Ginecologia");
+        layout2.putConstraint(SpringLayout.SOUTH, chckbxGinecologia, -6, SpringLayout.NORTH, textField7_);
+        panel2.add(chckbxGinecologia);
         frame4.setVisible(false);
+
+        
+
+        gp = new ButtonGroup();
+        gp.add(chckbxNewCheckBox);
+        gp.add(chckbxGastro);
+        gp.add(chckbxCardiologia);
+        gp.add(chckbxGinecologia);
+
+        JCheckBox chckbxNewCheckBox_ = new JCheckBox("Neurologia");
+        layout.putConstraint(SpringLayout.NORTH, chckbxNewCheckBox_, -2, SpringLayout.NORTH, label5);
+        layout.putConstraint(SpringLayout.EAST, chckbxNewCheckBox_, 0, SpringLayout.EAST, textField);
+        panel.add(chckbxNewCheckBox_);
+        
+        JCheckBox chckbxGastro_ = new JCheckBox("Pediatra");
+        layout.putConstraint(SpringLayout.WEST, chckbxGastro_, 0, SpringLayout.WEST, label8);
+        layout.putConstraint(SpringLayout.SOUTH, chckbxGastro_, -6, SpringLayout.NORTH, textField6);
+        layout.putConstraint(SpringLayout.EAST, chckbxGastro_, 0, SpringLayout.EAST, label8);
+        panel.add(chckbxGastro_);
+        
+        JCheckBox chckbxCardiologia_ = new JCheckBox("Cardiologia");
+        layout.putConstraint(SpringLayout.NORTH, chckbxGastro_, 0, SpringLayout.NORTH, chckbxCardiologia_);
+        layout.putConstraint(SpringLayout.WEST, chckbxCardiologia_, 0, SpringLayout.WEST, chckbxNewCheckBox_);
+        layout.putConstraint(SpringLayout.SOUTH, chckbxCardiologia_, -6, SpringLayout.NORTH, textField6);
+        panel.add(chckbxCardiologia_);
+        
+        JCheckBox chckbxGinecologia_ = new JCheckBox("Ginecologia");
+        layout.putConstraint(SpringLayout.SOUTH, chckbxGinecologia_, -6, SpringLayout.NORTH, textField6);
+        panel.add(chckbxGinecologia_);
+        frame2.setVisible(false);
+
+        
+
+        gp_ = new ButtonGroup();
+        gp_.add(chckbxNewCheckBox_);
+        gp_.add(chckbxGastro_);
+        gp_.add(chckbxCardiologia_);
+        gp_.add(chckbxGinecologia_);
+        
         
         JButton button3 = new JButton("Buscar");
         JButton button4 = new JButton("Voltar");
@@ -699,11 +704,10 @@ public class MinhaInterfaceGrafica  {
 	   String cpfstr; 
 	   String examesstr;
 	   String susstr;
-	   Enter_SUS(JTextField nome, JTextField idade, JTextField remedio, JTextField especialidade, JTextField cpf, JTextField exames, JTextField sus){
+	   Enter_SUS(JTextField nome, JTextField idade, JTextField remedio, JTextField cpf, JTextField exames, JTextField sus){
 		   this.nome = nome;
 		   this.idade = idade;
 		   this.remedio = remedio;
-		   this.especialidade = especialidade;
 		   this.cpf = cpf;
 		   this.exames = exames;
 		   this.sus = sus;
@@ -715,27 +719,28 @@ public class MinhaInterfaceGrafica  {
 		   idade.setText("");
 		   remediostr = remedio.getText();
 		   remedio.setText("");
-		   especialidadestr = especialidade.getText();
-		   especialidade.setText("");
-		   dorstr = getBotao(buttonGroup).getText();
+		  
 		   cpfstr = cpf.getText();
 		   cpf.setText("");
 		   examesstr = exames.getText();
 		   exames.setText("");
 		   susstr = sus.getText();
 		   sus.setText("");
-		   if(nomestr.trim().isEmpty()  || idadestr.trim().isEmpty() || dorstr.trim().isEmpty() || especialidadestr.trim().isEmpty()|| gravidadestr.trim().isEmpty() || cpfstr.trim().isEmpty() || susstr.trim().isEmpty() ||  getBotao(buttonGroup).getText() == null) {
+		   if(nomestr.trim().isEmpty()  || idadestr.trim().isEmpty() || cpfstr.trim().isEmpty() || susstr.trim().isEmpty() ||  getBotao(buttonGroup) == null || getBotao(gp_) == null) {
 			   JOptionPane.showMessageDialog(frame2,
 					    "Preencha todos os itens!");
-			   //verificar cpf
+			
 		   }
 		   else {
-			   if(ValidarCPF(cpfstr) == false) {
-				   JOptionPane.showMessageDialog(frame2,
+             especialidadestr = getBotao(gp_).getText();
+		   dorstr = getBotao(buttonGroup).getText();
+			   if(ValidaDados.validarCPF(cpfstr) == false) {
+				  JOptionPane.showMessageDialog(frame2,
 						    "Inserir cpf valido!");
 			   }
-			   else {
-		   
+			  else {
+		   new PacienteSus(cpfstr, Integer.parseInt(idadestr), Integer.parseInt(dorstr), nome, remediostr,
+				   especialidadestr,  examesstr, Integer.parseInt(susstr), hospital);
 		   System.out.println("\nNome:" + nomestr + "\nIdade:" + idadestr + " anos" + "\nExames:" + examesstr);
 		   troca(2);}
     }}}
@@ -752,7 +757,7 @@ public class MinhaInterfaceGrafica  {
 	   String enderecostr;
 	   String cnpjstr; 
 	  
-	   Enter_Hospital(JTextField nome, JTextField telefone, JTextField email, JTextField endereco, JTextField cnpj){
+	   Enter_Hospital(JTextField nome, JTextField telefone, JTextField email, JTextField endereco, JTextField cnpj, Hospital hospital){
 		   this.nome = nome;
 		   this.telefone = telefone;
 		   this.email =  email;
@@ -778,12 +783,12 @@ public class MinhaInterfaceGrafica  {
 		   }
 		   
 		   else {
-			   if(ValidarCNPJ(cnpjstr) == false) {
+			   if(ValidaDados.validaCNPJ(cnpjstr) == false) {
 				   JOptionPane.showMessageDialog(frame2,
-						    "Inserir cnpj valido!");
+					    "Inserir cnpj valido!");
 			   }
-			   else {
-			  Hospital = new Hospital(nome, cnpj, telefone, email, endereco);
+			   {
+			  hospital = new Hospital(nome, cnpj, telefone, email, endereco);
 		   System.out.println("\nNome:" + nomestr + "\nTelefone:" +  telefonestr + "\nEmail:" + emailstr);
 		   troca(1);}}
     }}
@@ -803,7 +808,6 @@ public class MinhaInterfaceGrafica  {
 	   JTextField nome;
 	   JTextField idade;
 	   JTextField remedio;
-	   JTextField especialidade; 
 	   JTextField cpf; 
 	   JTextField exames;
 	   JTextField convenio;
@@ -817,11 +821,10 @@ public class MinhaInterfaceGrafica  {
 	   String examesstr;
 	   String conveniostr;
 	   String idstr;
-	   Enter_Particular(JTextField nome, JTextField idade, JTextField remedio, JTextField especialidade, JTextField cpf, JTextField exames, JTextField convenio,  JTextField id){
+	   Enter_Particular(JTextField nome, JTextField idade, JTextField remedio, JTextField cpf, JTextField exames, JTextField convenio,  JTextField id  ){
 		   this.nome = nome;
 		   this.idade = idade;
 		   this.remedio = remedio;
-		   this.especialidade = especialidade;
 		   this.cpf = cpf;
 		   this.exames = exames;
 		   this.convenio = convenio;
@@ -834,10 +837,6 @@ public class MinhaInterfaceGrafica  {
 		   idade.setText("");
 		   remediostr = remedio.getText();
 		   remedio.setText("");
-		
-		   especialidadestr = especialidade.getText();
-		   especialidade.setText("");
-		   dorstr = getBotao(buttonGroup).getText();
 		   examesstr = exames.getText();
 		   exames.setText("");
 		   conveniostr = convenio.getText();
@@ -846,16 +845,20 @@ public class MinhaInterfaceGrafica  {
 		   id.setText("");
 		   cpfstr = cpf.getText();
 		   cpf.setText("");
-		   if(nomestr.trim().isEmpty()  || idadestr.trim().isEmpty() || dorstr.trim().isEmpty() || especialidadestr.trim().isEmpty() || cpfstr.trim().isEmpty() || idstr.trim().isEmpty() || conveniostr.trim().isEmpty() ||  getBotao(buttonGroup).getText() == null) {
+		   if(nomestr.trim().isEmpty()  || idadestr.trim().isEmpty()   || cpfstr.trim().isEmpty() || idstr.trim().isEmpty() || conveniostr.trim().isEmpty() ||  getBotao(buttonGroup2) == null || getBotao(gp) == null) {
 			   JOptionPane.showMessageDialog(frame4,
 					    "Preencha todos os itens!");
 		   }
 		   else {
-				   if(ValidarCPF(cpfstr) == false) {
+            especialidadestr = getBotao(gp).getText();
+		   dorstr = getBotao(buttonGroup2).getText();
+				   if(ValidaDados.validarCPF(cpfstr) == false) {
 					   JOptionPane.showMessageDialog(frame2,
 							    "Inserir cpf valido!");
 				   }
 				   else {
+					   new PacienteParticular(cpfstr, Integer.parseInt(idadestr), Integer.parseInt(dorstr), nome, remediostr,
+							   especialidadestr,  examesstr, conveniostr, Integer.parseInt(idstr), hospital);
 		   System.out.println("\nNome:" + nomestr + "\nIdade:" + idadestr + " anos" + "\nExames:" + examesstr);
 		   troca(4);}
     }}}
@@ -896,10 +899,4 @@ public class MinhaInterfaceGrafica  {
 	   }
    }
    
-    public static void main(String[] args) {
-        
-    	new MinhaInterfaceGrafica();
-    	
-    	
-    }
 }
