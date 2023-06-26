@@ -88,7 +88,7 @@ public class MinhaInterfaceGrafica  {
     
         menuBar.add(menuArquivo);
         menuBar.add(menuArquivo2);
-        menuBar.add(menuArquivo3);
+       // menuBar.add(menuArquivo3);
         menuBar.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         
         SpringLayout layout0 = new SpringLayout();
