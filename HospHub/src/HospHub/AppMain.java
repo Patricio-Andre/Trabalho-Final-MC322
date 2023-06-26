@@ -80,6 +80,9 @@ public class AppMain {
         System.out.println("Selecione uma das seguintes ações:");
         System.out.println("1 - receitas");
         System.out.println("2 - listar");
+        System.out.println("3 - solicitar exame");
+        System.out.println("4 - gerar laudo");
+        System.out.println("5 - gerar atestado");
         System.out.println("0 - sair");
     }
 
@@ -144,6 +147,46 @@ public class AppMain {
         }
     }
 
+    public static void novoExame(Scanner in, Hospital hospital) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        System.out.println("Digite o nome do exame");
+        String nome = in.nextLine();
+        System.out.println("Insira o cpf do paciente");
+        String cpf = in.nextLine();
+        System.out.println("Insira o valor do exame");
+        double valor = in.nextDouble();
+        System.out.println("Insira a data do examen");
+        String data = in.nextLine();
+        boolean dataEhValida = ValidaDados.validaData(data);
+        while (!dataEhValida) {
+            System.out.println("data invalida, tente novamente");
+            data = in.nextLine();
+            dataEhValida = ValidaDados.validaData(data);
+        }
+        LocalDate dataFormatada = LocalDate.parse(data, formatter);
+        System.out.println("Informe o registro do profissional da saude");
+        String registro = in.nextLine();
+        ProfissionalSaude profissional = hospital.buscaProfissionalSaude(registro);
+        if (profissional instanceof Medique) {
+            Medique medico = (Medique) profissional;
+            try {
+                if (medico.solicitarExame(cpf, nome, valor, dataFormatada)) {
+                    System.out.println("Exame solicitado com sucesso");
+                } else {
+                    System.out.println("Falha ao solicitar o exame");
+                }
+            } catch (ExameIncompativelException e) {
+                System.out.println("Falha ao realizar o pedido: Exame inconpativel");
+            }
+        } else {
+            System.out.println("O profissional solicitado não é um médico, logo não pode solicitar um exame");
+        }
+    }
+
+    public static void gerarLaudo(Scanner in, Hospital hospital) {
+
+    }
+
     public static void main(String args[]) {
         // new MinhaInterfaceGrafica();
         Hospital hospital = new Hospital("Novo Hospital", "12.821.660/0001-12", "(19)992926745",
@@ -158,6 +201,14 @@ public class AppMain {
                     break;
                 case 2:
                     menuListar(entrada, hospital);
+                    break;
+                case 3:
+                    novoExame(entrada, hospital);
+                    break;
+                case 4:
+                    gerarLaudo(entrada, hospital);
+                    break;
+                case 5:
                     break;
                 case 0:
                     break;
