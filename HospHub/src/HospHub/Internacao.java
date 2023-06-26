@@ -1,5 +1,6 @@
 package HospHub;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 
@@ -16,6 +17,7 @@ public class Internacao {
 
     public Internacao(Paciente paciente, Enfermeire enfermeire, Medique medique, double custo, LocalDateTime entrada, LocalDateTime saida, Hospital hospital){
         try{
+        	alocaEnfermeire();
             medique.cadastrar(paciente);
             enfermeire.cadastrar(paciente);
             this.custo = custo;
@@ -28,7 +30,7 @@ public class Internacao {
             contador ++;
             cuida();
         }
-        catch (ProfissionalUnfitException e){
+        catch (ProfissionalUnfitException | NullPointerException a){
             System.out.println("nao foi possivel cadastrar com esses profissionais");
             return;
         }
@@ -108,7 +110,25 @@ public class Internacao {
 		}
 
     }
-
+    
+    public void alocaEnfermeire() {
+    	// Aloca enfermeiro para o paciente se está no plantão
+		for(ProfissionalSaude values: hospital.getMapaFuncionarios().values()){
+			if(values instanceof Enfermeire) {
+				Enfermeire enfermeire = (Enfermeire) values;
+				if (LocalTime.now().isAfter(enfermeire.getInicioplantao()) 
+					&& LocalTime.now().isBefore(enfermeire.getFimplantao())) {
+					this.enfermeire = enfermeire;
+					System.out.println("foi alocado corretamente");
+					return;
+				}
+			}
+		}
+		this.enfermeire = null;
+		System.out.println("Não há enfermeires disponíveis para esse paciente");
+	}
+    
+    
     public String toString(){
         return "A internacao do paciente " + paciente + " que se iniciou" + entrada + " de id " + id + " e acabara em " + saida; // nao botei o medico ou enfermeiro pq ia ficar medico chamando paciente 2 vezes
     }
