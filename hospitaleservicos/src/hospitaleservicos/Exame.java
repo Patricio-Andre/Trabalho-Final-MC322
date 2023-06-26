@@ -18,6 +18,7 @@ public class Exame {
         this.custo = custo;
         this.data = data;
         this.paciente = paciente;
+        this.paciente.getListaDeExames().add(this);
         salvarArquivo();
         defineNumeroArquivo();
     }

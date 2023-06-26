@@ -18,6 +18,7 @@ public class Atestado {
 		this.diasAusencia = diasAusencia;
 		this.dataAtendimento = dataAtendimento;
 		this.paciente = paciente;
+		this.paciente.getListaDeAtestados().add(this);
 		salvarArquivo();
         defineNumeroArquivo();
 	}

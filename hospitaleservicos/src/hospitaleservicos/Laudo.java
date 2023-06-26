@@ -18,6 +18,7 @@ public class Laudo {
 		this.doenca = doenca;
 		this.dataAtendimento = dataAtendimento;
 		this.paciente = paciente;
+		this.paciente.getListaDeLaudos().add(this);
 		salvarArquivo();
         defineNumeroArquivo();
 	}

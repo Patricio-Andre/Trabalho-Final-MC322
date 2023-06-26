@@ -1,8 +1,5 @@
 package hospitaleservicos;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.time.Duration;
 import java.time.LocalDate;
 
 
@@ -14,19 +11,20 @@ public abstract class Paciente{
 	private String nome;
 	private String remediosProibidos;
 	private String especialidadeNecessaria;
-	private String quarto;
+	private int quarto;
 	private String examesProibidos;
 	private Medique medicoAlocado;
 	private ArrayList<Laudo> listaDeLaudos = new ArrayList<Laudo>();
 	private ArrayList<Exame> listaDeExames = new ArrayList<Exame>();
 	private ArrayList<Atestado> listaDeAtestados = new ArrayList<Atestado>();
 	private ArrayList<Receita> listaDeReceitas = new ArrayList<Receita>();
-	private LocalDateTime contador = LocalDateTime.now();
+	private static int contador = 0;
+	private int[] quartos = new int [30];
 	// Construtor
 	public Paciente(String cPF, int idade, int nivelDor, int gravidade, String nome, String remediosProibidos,
 			String especialidadeNecessaria, String examesProibidos, Medique medicoAlocado,
 			ArrayList<Laudo> listaDeLaudos, ArrayList<Exame> listaDeExames, ArrayList<Atestado> listaDeAtestados,
-			ArrayList<Receita> listaDeReceitas, LocalDateTime contador) {
+			ArrayList<Receita> listaDeReceitas) {
 		super();
 		CPF = cPF;
 		this.idade = idade;
@@ -36,12 +34,8 @@ public abstract class Paciente{
 		this.especialidadeNecessaria = especialidadeNecessaria;
 		this.examesProibidos = examesProibidos;
 		this.medicoAlocado = medicoAlocado;
-		this.listaDeLaudos = listaDeLaudos;
-		this.listaDeExames = listaDeExames;
-		this.listaDeAtestados = listaDeAtestados;
-		this.listaDeReceitas = listaDeReceitas;
-		this.contador = contador;
 		gerarGravidade();
+		adicionarQuarto();
 	}
 	// Getters e Setters
 	public int getIdade() {
@@ -74,10 +68,10 @@ public abstract class Paciente{
 	public void setEspecialidadeNecessaria(String especialidadeNecessaria) {
 		this.especialidadeNecessaria = especialidadeNecessaria;
 	}
-	public String getQuarto() {
+	public int getQuarto() {
 		return quarto;
 	}
-	public void setQuarto(String quarto) {
+	public void setQuarto(int quarto) {
 		this.quarto = quarto;
 	}
 	public String getGravidade() {
@@ -109,12 +103,6 @@ public abstract class Paciente{
 	}
 	public void setListaDeExames(ArrayList<Exame> listaDeExames) {
 		this.listaDeExames = listaDeExames;
-	}
-	public LocalDateTime getContador() {
-		return contador;
-	}
-	public void setContador(LocalDateTime contador) {
-		this.contador = contador;
 	}
 	public ArrayList<Atestado> getListaDeAtestados() {
 		return listaDeAtestados;
@@ -194,4 +182,21 @@ public abstract class Paciente{
 		}
 		return false;
 	}
+	
+	public void adicionarQuarto() {
+		if (contador == 0) {
+			for (int i = 0; i < quartos.length; i++) {
+			    quartos[i] = 0;
+			}
+		}
+		for (int i = 0; i < quartos.length; i++) {
+		    if (quartos[i] == 0) {
+		    	quartos[i] = 1;
+		    	this.quarto = i;
+		    	break;
+		    }
+		}
+		contador = 1;
+	}
+	
 }

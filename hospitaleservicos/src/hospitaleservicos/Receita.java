@@ -23,6 +23,7 @@ public class Receita {
         listaInterferencias = new LinkedList<String>();
         dataVencimento = null;
         this.paciente = paciente;
+        this.paciente.getListaDeReceitas().add(this);
         salvarArquivo();
         defineNumeroArquivo();
     }
