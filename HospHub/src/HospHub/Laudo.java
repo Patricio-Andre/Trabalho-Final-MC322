@@ -50,7 +50,7 @@ public class Laudo {
     	// Garante que todo arquivo terá um nome diferente;
     	boolean achou = false;
     	for (int i = 0; i < numeroArquivo; i++) {
-    		String diretorioPrincipal = System.getProperty("user.dir") + File.separator + "laudos";
+    		String diretorioPrincipal = System.getProperty("user.dir") + File.separator + "arquivos" + File.separator + "laudos";
     		String caminhoArquivo = diretorioPrincipal + File.separator + "Laudo_" + paciente.getCPF() + "_" + numeroArquivo + ".txt";
             File diretorio = new File(diretorioPrincipal);
             
@@ -71,7 +71,7 @@ public class Laudo {
         }
     }
     public void salvarArquivo() {
-    	String diretorioPrincipal = System.getProperty("user.dir") + File.separator + "laudos";
+    	String diretorioPrincipal = System.getProperty("user.dir") + File.separator + "arquivos" + File.separator + "laudos";
         String caminhoArquivo = diretorioPrincipal + File.separator + "Laudo_" + paciente.getCPF() + "_" + numeroArquivo + ".txt";
         BufferedWriter writer = null;
         try {

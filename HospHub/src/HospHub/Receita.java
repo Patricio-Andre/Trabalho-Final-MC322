@@ -105,7 +105,7 @@ public class Receita {
     	// Garante que todo arquivo terá um nome diferente;
     	boolean achou = false;
     	for (int i = 0; i < numeroArquivo; i++) {
-    		String diretorioPrincipal = System.getProperty("user.dir") + File.separator + "receitas";
+    		String diretorioPrincipal = System.getProperty("user.dir") + File.separator + "arquivos" + File.separator + "receitas";
             String caminhoArquivo = diretorioPrincipal + File.separator + "Receita_" + paciente.getCPF() + "_" + numeroArquivo + ".txt";
             File diretorio = new File(diretorioPrincipal);
             
@@ -126,7 +126,7 @@ public class Receita {
         }
     }
     public void salvarArquivo() {
-    	String diretorioPrincipal = System.getProperty("user.dir") + File.separator + "receitas";
+    	String diretorioPrincipal = System.getProperty("user.dir") + File.separator + "arquivos" + File.separator + "receitas";
         String caminhoArquivo = diretorioPrincipal + File.separator + "Receita_" + paciente.getCPF() + "_" + numeroArquivo + ".txt";
         BufferedWriter writer = null;
         try {
