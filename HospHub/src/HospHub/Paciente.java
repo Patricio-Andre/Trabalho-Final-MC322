@@ -22,9 +22,7 @@ public abstract class Paciente{
 	private int[] quartos = new int [30];
 	// Construtor
 	public Paciente(String cPF, int idade, int nivelDor, int gravidade, String nome, String remediosProibidos,
-			String especialidadeNecessaria, String examesProibidos, Medique medicoAlocado,
-			ArrayList<Laudo> listaDeLaudos, ArrayList<Exame> listaDeExames, ArrayList<Atestado> listaDeAtestados,
-			ArrayList<Receita> listaDeReceitas) {
+			String especialidadeNecessaria, String examesProibidos, Medique medicoAlocado) {
 		super();
 		CPF = cPF;
 		this.idade = idade;

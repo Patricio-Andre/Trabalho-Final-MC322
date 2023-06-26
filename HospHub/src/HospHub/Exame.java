@@ -65,7 +65,7 @@ public class Exame {
     	boolean achou = false;
     	for (int i = 0; i < numeroArquivo; i++) {
     		String diretorioPrincipal = System.getProperty("user.dir") + File.separator + "exames";
-            String caminhoArquivo = diretorioPrincipal + File.separator + "exame_" + nome + "_" + paciente.getNome() + "_" + i + ".txt";
+            String caminhoArquivo = diretorioPrincipal + File.separator + "exame_" + nome + "_" + paciente.getCPF() + "_" + i + ".txt";
             File diretorio = new File(diretorioPrincipal);
             
             // Verifica se o diretório existe e é um diretório válido
@@ -86,7 +86,7 @@ public class Exame {
     }
     public void salvarArquivo() {
     	String diretorioPrincipal = System.getProperty("user.dir") + File.separator + "exames";
-        String caminhoArquivo = diretorioPrincipal + File.separator + "exame_" + nome + "_" + paciente.getNome() + "_" + numeroArquivo + ".txt";
+        String caminhoArquivo = diretorioPrincipal + File.separator + "exame_" + nome + "_" + paciente.getCPF() + "_" + numeroArquivo + ".txt";
         BufferedWriter writer = null;
         try {
         	// Cria o diretório de exames caso não exista
