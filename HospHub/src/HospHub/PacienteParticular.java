@@ -9,12 +9,11 @@ public class PacienteParticular extends Paciente{
 	public PacienteParticular(String cPF, int idade, int nivelDor, int gravidade, String nome, String remediosProibidos,
 			String especialidadeNecessaria, String examesProibidos, Medique medicoAlocado,
 			ArrayList<Laudo> listaDeLaudos, ArrayList<Exame> listaDeExames, ArrayList<Atestado> listaDeAtestados,
-			ArrayList<Receita> listaDeReceitas, String convenio, int idConvenio, double custo) {
+			ArrayList<Receita> listaDeReceitas, String convenio, int idConvenio) {
 		super(cPF, idade, nivelDor, gravidade, nome, remediosProibidos, especialidadeNecessaria, examesProibidos,
 				medicoAlocado, listaDeLaudos, listaDeExames, listaDeAtestados, listaDeReceitas);
 		this.convenio = convenio;
 		this.idConvenio = idConvenio;
-		this.custo = custo;
 	}
 	// Getters e Setters
 	public String getConvenio() {
