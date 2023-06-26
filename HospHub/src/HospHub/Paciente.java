@@ -21,7 +21,7 @@ public abstract class Paciente{
 	private static int contador = 0;
 	private int[] quartos = new int [30];
 	// Construtor
-	public Paciente(String cPF, int idade, int nivelDor, int gravidade, String nome, String remediosProibidos,
+	public Paciente(String cPF, int idade, int nivelDor, String nome, String remediosProibidos,
 			String especialidadeNecessaria, String examesProibidos) {
 		super();
 		CPF = cPF;
@@ -33,6 +33,7 @@ public abstract class Paciente{
 		this.examesProibidos = examesProibidos;
 		gerarGravidade();
 		adicionarQuarto();
+		alocaMedico();
 	}
 	// Getters e Setters
 	public int getIdade() {
@@ -196,4 +197,7 @@ public abstract class Paciente{
 		contador = 1;
 	}
 	
+	public void alocaMedico() {
+		
+	}
 }
