@@ -124,7 +124,7 @@ public abstract class ProfissionalSaude implements Cadastrable{
     protected boolean interfere(String cpf, String remedio) throws RemedioIncompativelException{
         try{
             Paciente paciente = achaPaciente(cpf);
-            if(paciente.getListaInterferencias().contains(remedio)){
+            if(paciente.getExamesProibidos().contains(remedio)){
                 throw new RemedioIncompativelException();
             }
             return true;
@@ -138,10 +138,10 @@ public abstract class ProfissionalSaude implements Cadastrable{
     public boolean gerarReceita(String remedio, String dosagem, ProfissionalSaude profissionalSaude, String cpf){
         try{
             boolean flag = interfere(cpf, remedio);
-            if(flag){
-                Receita receita = new Receita(remedio, dosagem, this);
-                Paciente paciente = achaPaciente(cpf);
-                paciente.addReceita(receita);
+            Paciente paciente = achaPaciente(cpf);
+            if(flag) {
+                Receita receita = new Receita(remedio, dosagem, this, paciente);
+                paciente.getListaDeReceitas().add(receita);
                 System.out.println("receita cadastrada com sucesso");
                 return true;
             }
@@ -149,18 +149,24 @@ public abstract class ProfissionalSaude implements Cadastrable{
         }
         catch (RemedioIncompativelException e){
             System.out.println("remedio nao pode ser prescrevido");
+            return false;
+        }
+        catch (PacienteNotFoundException a){
+            System.out.println("paciente nao encontrado");
             return false;
         }
     }
 
     // sobrecarga
     public boolean gerarReceita(String remedio, String dosagem, ProfissionalSaude profissionalSaude, LocalDate dataVencimento, String cpf){
-        try{
+        
+    	
+    	try{
+    		Paciente paciente = this.achaPaciente(cpf);
             boolean flag = interfere(cpf, remedio);
             if(flag){
-                Receita receita = new Receita(remedio, dosagem, this, dataVencimento);
-                Paciente paciente = achaPaciente(cpf);
-                paciente.addReceita(receita);
+                Receita receita = new Receita(remedio, dosagem, this, dataVencimento, paciente);
+                paciente.getListaDeReceitas().add(receita);
                 System.out.println("receita cadastrada com sucesso");
                 return true;
             }
@@ -168,6 +174,10 @@ public abstract class ProfissionalSaude implements Cadastrable{
         }
         catch (RemedioIncompativelException e){
             System.out.println("remedio nao pode ser prescrevido");
+            return false;
+        }
+    	catch (PacienteNotFoundException a){
+            System.out.println("paciente nao encontrado");
             return false;
         }
     }
@@ -175,7 +185,8 @@ public abstract class ProfissionalSaude implements Cadastrable{
     public boolean removerReceita(String remedio, String cpf){
         try{
             Paciente paciente = achaPaciente(cpf);
-            paciente.removerReceita(remedio);
+            paciente.removerRemedio(remedio);
+            return true;
         }
         catch (PacienteNotFoundException e){
             System.out.println("paciente nao encontrado");
@@ -183,6 +194,6 @@ public abstract class ProfissionalSaude implements Cadastrable{
         }
     }
 
-
+    
    
 }

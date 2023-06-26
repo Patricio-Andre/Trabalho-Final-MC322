@@ -3,7 +3,6 @@ package HospHub;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
-import java.time.Clock;
 
 public class Internacao {
     private String id;
@@ -115,8 +114,14 @@ public class Internacao {
             }
         }
         hospital.remover(id);
-        medique.remover(paciente.getCPF());
-        enfermeire.remover(paciente.getCPF());
+        try {
+			medique.remover(paciente.getCPF());
+			enfermeire.remover(paciente.getCPF());
+		} catch (PacienteNotFoundException e) {
+			// Isso nunca vai acontecer porque o paciente foi cadastrado no início da classe
+			// mas para segurança do código, mantemos o padrão de try catch
+			System.out.println("Paciente não encontrado");
+		}
 
     }
 

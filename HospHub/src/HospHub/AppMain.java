@@ -238,7 +238,7 @@ public class AppMain {
     public static void main(String args[]) {
         // new MinhaInterfaceGrafica();
         Hospital hospital = new Hospital("Novo Hospital", "12.821.660/0001-12", "(19)992926745",
-                "hosp@placeholder.com.br", "Rua temporaria", null);
+                "hosp@placeholder.com.br", "Rua temporaria");
         Scanner entrada = new Scanner(System.in);
         imprimeMenu();
         int comando = entrada.nextInt();
