@@ -84,14 +84,33 @@ public class Hospital implements Cadastrable{
     public boolean cadastrar(Object profissionalouinternacao){
         if(profissionalouinternacao instanceof ProfissionalSaude){
             ProfissionalSaude profissional = (ProfissionalSaude) profissionalouinternacao;
-            if(mapaFuncionarios.values().contains(profissional)){
-                System.out.println("profissional ja cadastrado");
-                return false;
+            if(profissional instanceof Medique){
+                Medique medique = (Medique) profissional;
+                if(mapaFuncionarios.containsKey(medique.getRegistro())){
+                    System.out.println("medique ja cadastrado");
+                    return false;
+                }
+                else{
+                    mapaFuncionarios.put(medique.getRegistro(), medique);
+                }
             }
+            else if(profissional instanceof Enfermeire){
+                Enfermeire enfermeire = (Enfermeire) profissional;
+                if(mapaFuncionarios.containsKey(enfermeire.getRegistro())){
+                    System.out.println("enfermeire ja cadastrado");
+                    return false;
+                }
+                else{
+                    mapaFuncionarios.put(enfermeire.getRegistro(), enfermeire);
+                }
+            }
+<<<<<<< HEAD
+=======
             mapaFuncionarios.put(profissional.getRegistro(), profissional);
             System.out.println("profissional cadastrado com sucesso!");
             salvaArquivos();
             return true;
+>>>>>>> e7bfcf51497e99ed5ab70291c421cf167f12b25a
         }
         else if (profissionalouinternacao instanceof Internacao){
             Internacao internacao = (Internacao) profissionalouinternacao;

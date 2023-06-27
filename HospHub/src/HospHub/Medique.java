@@ -124,7 +124,11 @@ public class Medique extends ProfissionalSaude {
         }
     }
 
-
+    public String toString(){
+        return "e medique " + this.getNome()+ " e registro " + this.getRegistro() + " e endereco "  + this.getEndereco() + " possui um limite de pacientes " + this.getLimitepacientes()
+        + " tem cpf " + this.getCPF() + " inicia plantao em " + this.getInicioplantao() + " e acaba em " + this.getFimplantao() + " especializade em " + especializacao + " cobrando "
+        + custo;
+    }
 
 
 
