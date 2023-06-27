@@ -625,10 +625,10 @@ public class MinhaInterfaceGrafica  {
         SpringLayout layout32= new SpringLayout();
         JPanel panel32 = new JPanel(layout32);
         frame6.setContentPane(panel32); 
-        panel32.add(label12);
-        panel32.add(textfield12);
-        panel32.add(button3);
-        panel32.add(button4);
+        panel32.add(label122);
+        panel32.add(textfield122);
+        panel32.add(button32);
+        panel32.add(button42);
         
         layout32.putConstraint(SpringLayout.WEST, label122, 10, SpringLayout.WEST, panel32);
         layout32.putConstraint(SpringLayout.NORTH, label122, 10, SpringLayout.NORTH, panel32);
@@ -650,11 +650,11 @@ public class MinhaInterfaceGrafica  {
         button43.addActionListener(new Troca_frame7());
         SpringLayout layout33= new SpringLayout();
         JPanel panel33 = new JPanel(layout33);
-        frame5.setContentPane(panel33); 
-        panel33.add(label12);
-        panel33.add(textfield12);
-        panel33.add(button3);
-        panel33.add(button4);
+        frame7.setContentPane(panel33); 
+        panel33.add(label123);
+        panel33.add(textfield123);
+        panel33.add(button33);
+        panel33.add(button43);
         
         layout33.putConstraint(SpringLayout.WEST, label123, 10, SpringLayout.WEST, panel33);
         layout33.putConstraint(SpringLayout.NORTH, label123, 10, SpringLayout.NORTH, panel33);
@@ -1093,3 +1093,15 @@ public class MinhaInterfaceGrafica  {
 	   }
 	   }
    }
+   public static void main(String[] args) {
+	   
+   Hospital hospital =    new Hospital( "nome",  "cnpj", "telefone", "email", "endereco");
+   hospital.cadastrar(new Medique("Cardiologia", 0, "nome", "31231M","endereco", LocalTime.of(19, 0),
+        LocalTime.of(23, 55), "50930678818", 2));
+   System.out.println(hospital.ListarFuncionarios());
+   	new MinhaInterfaceGrafica(hospital);
+   
+   	
+   	
+   }
+}
