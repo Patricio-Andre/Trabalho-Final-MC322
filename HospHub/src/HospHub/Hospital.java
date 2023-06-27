@@ -1,6 +1,13 @@
 package HospHub;
 import java.util.HashMap;
 import java.lang.StringBuilder;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 
 public class Hospital implements Cadastrable{
     private HashMap <String, Internacao> mapaInternacoes;
@@ -10,9 +17,8 @@ public class Hospital implements Cadastrable{
     private String email;
     private String endereco;
     private HashMap <String, ProfissionalSaude> mapaFuncionarios;
-    private ArquivoProfissionais arquivoprofissionais;
 
-    public Hospital(String nome, String cnpj, String telefone,String email, String endereco, ArquivoProfissionais arquivoprofissionais) {
+    public Hospital(String nome, String cnpj, String telefone,String email, String endereco) {
         mapaInternacoes = new HashMap <String, Internacao> ();
         this.nome = nome;
         this.cnpj = cnpj;
@@ -20,83 +26,60 @@ public class Hospital implements Cadastrable{
         this.email = email;
         this.endereco = endereco;
        mapaFuncionarios = new HashMap<String, ProfissionalSaude>();
-        this.arquivoprofissionais = arquivoprofissionais;
+       salvaArquivos();
     }
 
     public HashMap<String, Internacao> getMapaInternacoes() {
         return mapaInternacoes;
     }
 
-
     public void setMapaInternacoes(HashMap<String, Internacao> mapaInternacoes) {
         this.mapaInternacoes = mapaInternacoes;
     }
-
 
     public String getNome() {
         return nome;
     }
 
-
     public void setNome(String nome) {
         this.nome = nome;
     }
-
 
     public String getCnpj() {
         return cnpj;
     }
 
-
     public String getTelefone() {
         return telefone;
     }
-
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
-
     public String getEmail() {
         return email;
     }
-
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-
     public String getEndereco() {
         return endereco;
     }
-
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
 
-
     public HashMap<String, ProfissionalSaude> getMapaFuncionarios() {
         return mapaFuncionarios;
     }
 
-
     public void setMapaFuncionarios(HashMap<String, ProfissionalSaude> mapaFuncionarios) {
         this.mapaFuncionarios = mapaFuncionarios;
     }
-
-
-    public ArquivoProfissionais getArquivoprofissionais() {
-        return arquivoprofissionais;
-    }
-
-
-    public void setArquivoprofissionais(ArquivoProfissionais arquivoprofissionais) {
-        this.arquivoprofissionais = arquivoprofissionais;
-    }
-
 
     public boolean cadastrar(Object profissionalouinternacao){
         if(profissionalouinternacao instanceof ProfissionalSaude){
@@ -121,6 +104,13 @@ public class Hospital implements Cadastrable{
                     mapaFuncionarios.put(enfermeire.getRegistro(), enfermeire);
                 }
             }
+<<<<<<< HEAD
+=======
+            mapaFuncionarios.put(profissional.getRegistro(), profissional);
+            System.out.println("profissional cadastrado com sucesso!");
+            salvaArquivos();
+            return true;
+>>>>>>> e7bfcf51497e99ed5ab70291c421cf167f12b25a
         }
         else if (profissionalouinternacao instanceof Internacao){
             Internacao internacao = (Internacao) profissionalouinternacao;
@@ -145,6 +135,7 @@ public class Hospital implements Cadastrable{
             return false;
            }
            System.out.println("internacao removida com sucesso");
+           salvaArquivos();
            return true;
         }
         catch(NumberFormatException e){
@@ -216,12 +207,42 @@ public class Hospital implements Cadastrable{
         }
         return sb.toString().equals("\n") ? "nao ha internacoes cadastradas" : sb.toString();
     }
-
-    public void leArquivo(ArquivoProfissionais a){
-        System.out.println("Aaaa");
-        // soh o patricio sabe como vai ser o arquivo
+    
+    public void leArquivo(){
+    	// Ler arquivos quando iniciar o sistema novamente
+    	try {
+    		String diretorioPrincipal = System.getProperty("user.dir") + File.separator + "profissionalSaude";
+            String caminhoArquivo = diretorioPrincipal + "HashMap_Profissionais_de_Saude" + ".obj";
+            FileInputStream fileIn = new FileInputStream(caminhoArquivo);
+            ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+            HashMap<String, ProfissionalSaude> hashMapLido = (HashMap<String, ProfissionalSaude>) objectIn.readObject();
+            for (String i : hashMapLido.keySet()) {
+                ProfissionalSaude profissional = hashMapLido.get(i);
+                cadastrar(profissional);
+            }
+            objectIn.close();
+            fileIn.close();
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Hashmap não encontrado");
+        }
     }
-
+    public void salvaArquivos() {
+    	// Salva a lista de profissionais de saúde toda vez que um novo profissional é adicionado ou removido
+    	try {
+    		String diretorioPrincipal = System.getProperty("user.dir") + File.separator + "profissionalSaude";
+            String caminhoArquivo = diretorioPrincipal + "HashMap_Profissionais_de_Saude" + ".obj";
+            FileOutputStream fileOut = new FileOutputStream(caminhoArquivo);
+            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+            objectOut.writeObject(mapaFuncionarios);
+            objectOut.close();
+            fileOut.close();
+        } catch (IOException e) {
+        	System.out.println("Não conseguiu salvar o hashmap");
+        }
+    }
+    
+    
+    
     public String toString(){
         return " o hospital " + nome + " de cnpj " + cnpj + " no endereco " + endereco + " possui telefone " + telefone + " e email " + email + " e possui os seguintes medicos "
         + ListarMedicos() + " os seguintes enfermeiros " + ListarEnfermeiros() + " e as seguintes internacoes " + ListarInternacoes();
