@@ -124,7 +124,7 @@ public abstract class ProfissionalSaude implements Cadastrable{
     protected boolean interfere(String cpf, String remedio) throws RemedioIncompativelException{
         try{
             Paciente paciente = achaPaciente(cpf);
-            if(paciente.getExamesProibidos().contains(remedio)){
+            if(paciente.getRemediosProibidos().equals(remedio)){
                 throw new RemedioIncompativelException();
             }
             return true;
