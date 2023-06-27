@@ -64,7 +64,7 @@ public class Medique extends ProfissionalSaude {
     }
 
     private boolean exameInterfere(Paciente paciente,String nome){
-        if(paciente.getExamesProibidos().contains(nome)){
+        if(paciente.getExamesProibidos().equals(nome)){
             return true;
         }
         return false;
