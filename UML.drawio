@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-06-27T05:30:17.617Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="ALKJkFd8UiPUjfYicja7" version="21.5.0" type="github">
+<mxfile host="app.diagrams.net" modified="2023-06-27T05:50:29.518Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="0JJ74qqhOul1f1dsx8dd" version="21.5.0" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="1313" dy="716" grid="1" gridSize="10" guides="0" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1909" dy="1042" grid="1" gridSize="10" guides="0" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -175,11 +175,19 @@
         <mxCell id="pTgg_ab2X4VNANZZpPe0-21" value="- numeroSUS : int" style="text;strokeColor=none;align=left;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontFamily=Helvetica;fontColor=default;" vertex="1" parent="-9V2bEK6rvMUXnRSOSfq-496">
           <mxGeometry y="30" width="200" height="30" as="geometry" />
         </mxCell>
+        <mxCell id="pTgg_ab2X4VNANZZpPe0-46" style="edgeStyle=none;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;labelBackgroundColor=default;strokeColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=none;endFill=0;startArrow=classic;startFill=1;startSize=10;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="-9V2bEK6rvMUXnRSOSfq-503">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="150" y="1080" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="43" y="1080" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
         <mxCell id="-9V2bEK6rvMUXnRSOSfq-503" value="Exame" style="swimlane;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="320" y="1220" width="130" height="100" as="geometry" />
+          <mxGeometry x="10" y="1200" width="130" height="100" as="geometry" />
         </mxCell>
         <mxCell id="pTgg_ab2X4VNANZZpPe0-30" value="&lt;div&gt;- nome : String&lt;/div&gt;&lt;div&gt;- custo : double&lt;/div&gt;&lt;div&gt;- data : LocalDate&lt;/div&gt;&lt;div&gt;- paciente : Paciente&lt;/div&gt;" style="text;strokeColor=none;align=left;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontFamily=Helvetica;fontColor=default;" vertex="1" parent="-9V2bEK6rvMUXnRSOSfq-503">
-          <mxGeometry y="10" width="110" height="80" as="geometry" />
+          <mxGeometry y="20" width="130" height="70" as="geometry" />
         </mxCell>
         <mxCell id="pTgg_ab2X4VNANZZpPe0-31" value="+ salvarArquivo()" style="text;whiteSpace=wrap;fontSize=11;fontFamily=Helvetica;fontColor=default;" vertex="1" parent="-9V2bEK6rvMUXnRSOSfq-503">
           <mxGeometry y="80" width="110" height="20" as="geometry" />
@@ -191,11 +199,41 @@
             <Array as="points" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="pTgg_ab2X4VNANZZpPe0-47" style="edgeStyle=none;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;labelBackgroundColor=default;strokeColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=none;endFill=0;startArrow=classic;startFill=1;startSize=10;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="-9V2bEK6rvMUXnRSOSfq-530">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="150" y="1080" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="460" y="1080" />
+              <mxPoint x="330" y="1080" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
         <mxCell id="-9V2bEK6rvMUXnRSOSfq-530" value="Atestado" style="swimlane;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="810" y="1210" width="200" height="200" as="geometry" />
+          <mxGeometry x="420" y="1200" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pTgg_ab2X4VNANZZpPe0-41" value="&lt;div&gt;- medique : Medique&lt;/div&gt;&lt;div&gt;- diasAusencia : int&lt;/div&gt;&lt;div&gt;- dataAtendimento : LocalDate&lt;/div&gt;&lt;div&gt;- paciente : Paciente&lt;/div&gt;" style="text;strokeColor=none;align=left;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontFamily=Helvetica;fontColor=default;" vertex="1" parent="-9V2bEK6rvMUXnRSOSfq-530">
+          <mxGeometry y="30" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pTgg_ab2X4VNANZZpPe0-42" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;labelBackgroundColor=default;strokeColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=none;shape=connector;entryX=1;entryY=0;entryDx=0;entryDy=0;endFill=0;" edge="1" parent="-9V2bEK6rvMUXnRSOSfq-530" target="pTgg_ab2X4VNANZZpPe0-43">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint y="90" as="sourcePoint" />
+            <mxPoint x="80" y="90" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pTgg_ab2X4VNANZZpPe0-43" value="+ salvarArquivo()" style="text;strokeColor=none;align=left;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontFamily=Helvetica;fontColor=default;" vertex="1" parent="-9V2bEK6rvMUXnRSOSfq-530">
+          <mxGeometry y="90" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pTgg_ab2X4VNANZZpPe0-45" style="edgeStyle=none;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;labelBackgroundColor=default;strokeColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=diamondThin;startSize=10;startArrow=classic;startFill=1;endFill=1;endSize=15;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="-9V2bEK6rvMUXnRSOSfq-531" target="-9V2bEK6rvMUXnRSOSfq-529">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220" y="1080" />
+              <mxPoint x="150" y="1080" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="-9V2bEK6rvMUXnRSOSfq-531" value="Laudo" style="swimlane;whiteSpace=wrap;html=1;startSize=20;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="560" y="1210" width="200" height="100" as="geometry" />
+          <mxGeometry x="170" y="1200" width="200" height="100" as="geometry" />
         </mxCell>
         <mxCell id="pTgg_ab2X4VNANZZpPe0-35" value="&lt;div&gt;- medique : Medique&lt;/div&gt;&lt;div&gt;- doenca : String&lt;/div&gt;&lt;div&gt;- dataAtendimento : LocalDate&lt;/div&gt;&lt;div&gt;- paciente : Paciente&lt;/div&gt;" style="text;strokeColor=none;align=left;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontFamily=Helvetica;fontColor=default;" vertex="1" parent="-9V2bEK6rvMUXnRSOSfq-531">
           <mxGeometry y="20" width="200" height="60" as="geometry" />
@@ -217,8 +255,17 @@
             <Array as="points" />
           </mxGeometry>
         </mxCell>
+        <mxCell id="pTgg_ab2X4VNANZZpPe0-44" style="edgeStyle=none;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=default;strokeColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=diamondThin;endFill=1;endSize=15;startArrow=classic;startFill=1;startSize=10;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="-9V2bEK6rvMUXnRSOSfq-40" target="2CkzwocB3PWpD3vvepL0-2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="825" y="1120" />
+              <mxPoint x="600" y="1120" />
+              <mxPoint x="600" y="665" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
         <mxCell id="-9V2bEK6rvMUXnRSOSfq-40" value="Receita" style="swimlane;whiteSpace=wrap;html=1;startSize=30;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="50" y="1210" width="220" height="190" as="geometry" />
+          <mxGeometry x="660" y="1210" width="220" height="190" as="geometry" />
         </mxCell>
         <mxCell id="-9V2bEK6rvMUXnRSOSfq-42" value="&lt;div&gt;- remedio : String&lt;/div&gt;&lt;div&gt;- dosagem : String&lt;/div&gt;&lt;div&gt;- profissionalSaude : ProfissionalSaude&lt;/div&gt;&lt;div&gt;- listaInterferencias : LinkedList&amp;lt;String&amp;gt;&lt;/div&gt;&lt;div&gt;- dataVencimento : LocalDate&lt;/div&gt;&lt;div&gt;- paciente : Paciente&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="-9V2bEK6rvMUXnRSOSfq-40" vertex="1">
           <mxGeometry y="30" width="220" height="90" as="geometry" />
@@ -278,6 +325,28 @@
         </mxCell>
         <mxCell id="XoWCgdNntx8YlR83VrCc-10" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="770" y="375" width="20" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pTgg_ab2X4VNANZZpPe0-49" value="&amp;lt;&amp;lt; static &amp;gt;&amp;gt;&lt;br&gt;Arquivos" style="swimlane;whiteSpace=wrap;html=1;startSize=30;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="990" y="120" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pTgg_ab2X4VNANZZpPe0-54" value="&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ abrirArquivos(String, String)&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;- arquivosPorCPF(String, String)&lt;/div&gt;&lt;div&gt;- listaArquivos(String, String)&lt;/div&gt;&lt;div&gt;- abrir(String)&lt;/div&gt;" style="text;strokeColor=none;align=left;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontFamily=Helvetica;fontColor=default;" vertex="1" parent="pTgg_ab2X4VNANZZpPe0-49">
+          <mxGeometry y="60" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pTgg_ab2X4VNANZZpPe0-55" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;labelBackgroundColor=default;strokeColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=none;shape=connector;endFill=0;entryX=1;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="pTgg_ab2X4VNANZZpPe0-49" target="pTgg_ab2X4VNANZZpPe0-56">
+          <mxGeometry width="80" relative="1" as="geometry">
+            <mxPoint y="60" as="sourcePoint" />
+            <mxPoint x="210" y="60" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pTgg_ab2X4VNANZZpPe0-56" value="- caminhosArquivos : ArrayList&amp;lt;String&amp;gt;" style="text;strokeColor=none;align=left;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontFamily=Helvetica;fontColor=default;" vertex="1" parent="pTgg_ab2X4VNANZZpPe0-49">
+          <mxGeometry y="30" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pTgg_ab2X4VNANZZpPe0-57" value="&amp;lt;&amp;lt; static &amp;gt;&amp;gt;&lt;br&gt;ValidaDados" style="swimlane;whiteSpace=wrap;html=1;startSize=30;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1230" y="120" width="290" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="pTgg_ab2X4VNANZZpPe0-61" value="&#xa;+ validarCPF(String)&#xa;+ validaNome(String)&#xa;+ validaCNPJ(String)&#xa;+ validaTelefone(String)&#xa;+ validaData(String)&#xa;+ validaRegistro(String)" style="text;whiteSpace=wrap;fontSize=11;fontFamily=Helvetica;fontColor=default;" vertex="1" parent="pTgg_ab2X4VNANZZpPe0-57">
+          <mxGeometry y="20" width="290" height="100" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
