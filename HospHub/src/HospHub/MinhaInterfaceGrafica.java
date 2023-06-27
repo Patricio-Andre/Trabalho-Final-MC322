@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalTime;
 import java.util.Enumeration;
 
 import javax.swing.filechooser.FileFilter.*;
@@ -24,6 +25,9 @@ public class MinhaInterfaceGrafica  {
 	 JFrame frame3; 
 	 JFrame frame4;
 	 JFrame frame5;
+	 JFrame frame6;
+	 JFrame frame7;
+	 JFrame frame8;
 	 ButtonGroup buttonGroup;
 	 ButtonGroup buttonGroup2;
      ButtonGroup gp_;
@@ -37,6 +41,9 @@ public class MinhaInterfaceGrafica  {
         frame3 = new JFrame();
         frame4 = new JFrame();
         frame5 = new JFrame();
+        frame7 = new JFrame();
+        frame6 = new JFrame();
+        frame8 = new JFrame();
         this.hospital = hospital;
         
         JLabel txt = new JLabel("");
@@ -75,20 +82,19 @@ public class MinhaInterfaceGrafica  {
         menuArquivo2.add(itemAtestado);
         
         JMenuItem itemExame = new JMenuItem("Pegar exames");
-        itemExame.addActionListener(new Troca_frame5());
+        itemExame.addActionListener(new Troca_frame6());
         menuArquivo2.add(itemExame);
         
         JMenuItem itemLaudo = new JMenuItem("Pegar laudos");
-        itemLaudo.addActionListener(new Troca_frame5());
+        itemLaudo.addActionListener(new Troca_frame7());
         menuArquivo2.add(itemLaudo);
         
         JMenuItem itemReceita = new JMenuItem("Pegar receita");
-        itemReceita.addActionListener(new Troca_frame5());
+        itemReceita.addActionListener(new Troca_frame8());
         menuArquivo2.add(itemReceita);
     
         menuBar.add(menuArquivo);
         menuBar.add(menuArquivo2);
-       // menuBar.add(menuArquivo3);
         menuBar.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         
         SpringLayout layout0 = new SpringLayout();
@@ -386,7 +392,7 @@ public class MinhaInterfaceGrafica  {
         JTextField textField8_ = new JTextField(21);
         JLabel label10_ = new JLabel("Nivel de dor:");
 
-        button2_.addActionListener(new Enter_Particular(textField_, textField2_, textField3_, textField7_,textField5_, textField8_, textField4_ ));
+        button2_.addActionListener(new Enter_Particular(textField_, textField2_, textField3_, textField7_,textField5_, textField8_, textField4_ , hospital));
 
 
         SpringLayout layout2 = new SpringLayout();
@@ -607,6 +613,84 @@ public class MinhaInterfaceGrafica  {
         layout3.putConstraint(SpringLayout.SOUTH, button4, -10, SpringLayout.SOUTH, panel3);
         layout3.putConstraint(SpringLayout.WEST, button4, 10, SpringLayout.EAST, button3);
         
+        JButton button32 = new JButton("Buscar");
+        JButton button42 = new JButton("Voltar");
+        JLabel label122 = new JLabel("Cfp do paciente:");
+        JTextField textfield122 = new JTextField(15);
+        frame6.setVisible(false);
+        frame6.setSize(400, 110);
+        frame6.setTitle("Buscar paciente");
+        button32.addActionListener(new Buscar2(textfield122 ));
+        button42.addActionListener(new Troca_frame6());
+        SpringLayout layout32= new SpringLayout();
+        JPanel panel32 = new JPanel(layout32);
+        frame6.setContentPane(panel32); 
+        panel32.add(label12);
+        panel32.add(textfield12);
+        panel32.add(button3);
+        panel32.add(button4);
+        
+        layout32.putConstraint(SpringLayout.WEST, label122, 10, SpringLayout.WEST, panel32);
+        layout32.putConstraint(SpringLayout.NORTH, label122, 10, SpringLayout.NORTH, panel32);
+        layout32.putConstraint(SpringLayout.WEST, textfield122, 10, SpringLayout.EAST, label122);
+        layout32.putConstraint(SpringLayout.NORTH, textfield122, 10, SpringLayout.NORTH, panel32);
+        layout32.putConstraint(SpringLayout.SOUTH, button32, -10, SpringLayout.SOUTH, panel32);
+        layout32.putConstraint(SpringLayout.WEST, button32, 10, SpringLayout.WEST, panel32);
+        layout32.putConstraint(SpringLayout.SOUTH, button42, -10, SpringLayout.SOUTH, panel32);
+        layout32.putConstraint(SpringLayout.WEST, button42, 10, SpringLayout.EAST, button32);
+        
+        JButton button33 = new JButton("Buscar");
+        JButton button43 = new JButton("Voltar");
+        JLabel label123 = new JLabel("Cfp do paciente:");
+        JTextField textfield123 = new JTextField(15);
+        frame7.setVisible(false);
+        frame7.setSize(400, 110);
+        frame7.setTitle("Buscar paciente");
+        button33.addActionListener(new Buscar3(textfield123 ));
+        button43.addActionListener(new Troca_frame7());
+        SpringLayout layout33= new SpringLayout();
+        JPanel panel33 = new JPanel(layout33);
+        frame5.setContentPane(panel33); 
+        panel33.add(label12);
+        panel33.add(textfield12);
+        panel33.add(button3);
+        panel33.add(button4);
+        
+        layout33.putConstraint(SpringLayout.WEST, label123, 10, SpringLayout.WEST, panel33);
+        layout33.putConstraint(SpringLayout.NORTH, label123, 10, SpringLayout.NORTH, panel33);
+        layout33.putConstraint(SpringLayout.WEST, textfield123, 10, SpringLayout.EAST, label123);
+        layout33.putConstraint(SpringLayout.NORTH, textfield123, 10, SpringLayout.NORTH, panel33);
+        layout33.putConstraint(SpringLayout.SOUTH, button33, -10, SpringLayout.SOUTH, panel33);
+        layout33.putConstraint(SpringLayout.WEST, button33, 10, SpringLayout.WEST, panel33);
+        layout33.putConstraint(SpringLayout.SOUTH, button43, -10, SpringLayout.SOUTH, panel33);
+        layout33.putConstraint(SpringLayout.WEST, button43, 10, SpringLayout.EAST, button33);
+        
+        JButton button34 = new JButton("Buscar");
+        JButton button44 = new JButton("Voltar");
+        JLabel label124 = new JLabel("Cfp do paciente:");
+        JTextField textfield124 = new JTextField(15);
+        frame8.setVisible(false);
+        frame8.setSize(400, 110);
+        frame8.setTitle("Buscar paciente");
+        button34.addActionListener(new Buscar(textfield124 ));
+        button44.addActionListener(new Troca_frame8());
+        SpringLayout layout34= new SpringLayout();
+        JPanel panel34 = new JPanel(layout34);
+        frame8.setContentPane(panel34); 
+        panel34.add(label124);
+        panel34.add(textfield124);
+        panel34.add(button34);
+        panel34.add(button44);
+        
+        layout34.putConstraint(SpringLayout.WEST, label124, 10, SpringLayout.WEST, panel34);
+        layout34.putConstraint(SpringLayout.NORTH, label124, 10, SpringLayout.NORTH, panel34);
+        layout34.putConstraint(SpringLayout.WEST, textfield124, 10, SpringLayout.EAST, label124);
+        layout34.putConstraint(SpringLayout.NORTH, textfield124, 10, SpringLayout.NORTH, panel34);
+        layout34.putConstraint(SpringLayout.SOUTH, button34, -10, SpringLayout.SOUTH, panel34);
+        layout34.putConstraint(SpringLayout.WEST, button34, 10, SpringLayout.WEST, panel34);
+        layout34.putConstraint(SpringLayout.SOUTH, button44, -10, SpringLayout.SOUTH, panel34);
+        layout34.putConstraint(SpringLayout.WEST, button44, 10, SpringLayout.EAST, button34);
+        
        frame1.pack();
     	
     }
@@ -637,7 +721,49 @@ public class MinhaInterfaceGrafica  {
         troca(5);
     }}
    
+   class Troca_frame6 implements ActionListener{
+	   public void actionPerformed(ActionEvent e){
+        troca(6);
+    }}
+   
+   class Troca_frame7 implements ActionListener{
+	   public void actionPerformed(ActionEvent e){
+        troca(7);
+    }}
+   
+   class Troca_frame8 implements ActionListener{
+	   public void actionPerformed(ActionEvent e){
+        troca(8);
+    }}
+   
    public void troca(int i) {
+	   if(i==8) {
+		   if(frame1.isActive()){
+	       	frame1.setVisible(false);
+	       	frame8.setVisible(true);
+	       }
+	       else{
+	           frame1.setVisible(true);
+	           frame8.setVisible(false);}
+		   }
+	   if(i==7) {
+		   if(frame1.isActive()){
+	       	frame1.setVisible(false);
+	       	frame7.setVisible(true);
+	       }
+	       else{
+	           frame1.setVisible(true);
+	           frame7.setVisible(false);}
+		   }
+	   if(i==6) {
+		   if(frame1.isActive()){
+	       	frame1.setVisible(false);
+	       	frame6.setVisible(true);
+	       }
+	       else{
+	           frame1.setVisible(true);
+	           frame6.setVisible(false);}
+		   }
 	   if(i==5) {
 		   if(frame1.isActive()){
 	       	frame1.setVisible(false);
@@ -790,7 +916,13 @@ public class MinhaInterfaceGrafica  {
 			   }
 			   else
 			   {
-			  hospital = new Hospital(nomestr, cnpjstr, telefonestr, emailstr, enderecostr);
+			  hospital.setEmail(emailstr);
+			  hospital.setEndereco(enderecostr);;
+			  hospital.setNome(nomestr);;
+			  hospital.setTelefone(telefonestr);;
+			  hospital.setCnpj(cnpjstr);
+			  
+			  
 		   System.out.println("\nNome:" + nomestr + "\nTelefone:" +  telefonestr + "\nEmail:" + emailstr);
 		   troca(1);}}
     }}
@@ -823,7 +955,7 @@ public class MinhaInterfaceGrafica  {
 	   String examesstr;
 	   String conveniostr;
 	   String idstr;
-	   Enter_Particular(JTextField nome, JTextField idade, JTextField remedio, JTextField cpf, JTextField exames, JTextField convenio,  JTextField id  ){
+	   Enter_Particular(JTextField nome, JTextField idade, JTextField remedio, JTextField cpf, JTextField exames, JTextField convenio,  JTextField id, Hospital hospital ){
 		   this.nome = nome;
 		   this.idade = idade;
 		   this.remedio = remedio;
@@ -896,8 +1028,68 @@ public class MinhaInterfaceGrafica  {
 				    "Preencha o CPF!");
 	   }
 	   else {
+		   Arquivos.abrirArquivos(txtstr, "atestado");
 		   troca(5);
 	   }
 	   }
    }
-}
+   
+   class Buscar2 implements ActionListener{
+	   JTextField txt;
+	   String txtstr;
+	   Buscar2(JTextField txt){
+	   this.txt = txt;
+	   }
+	   public void actionPerformed(ActionEvent e) {
+	   txtstr = txt.getText();
+	   txt.setText("");
+	   if(txtstr.trim().isEmpty()) {
+		   JOptionPane.showMessageDialog(frame6,
+				    "Preencha o CPF!");
+	   }
+	   else {
+		   Arquivos.abrirArquivos(txtstr, "exames");
+		   troca(6);
+	   }
+	   }
+   }
+   
+   class Buscar3 implements ActionListener{
+	   JTextField txt;
+	   String txtstr;
+	   Buscar3(JTextField txt){
+	   this.txt = txt;
+	   }
+	   public void actionPerformed(ActionEvent e) {
+	   txtstr = txt.getText();
+	   txt.setText("");
+	   if(txtstr.trim().isEmpty()) {
+		   JOptionPane.showMessageDialog(frame7,
+				    "Preencha o CPF!");
+	   }
+	   else {
+		   Arquivos.abrirArquivos(txtstr, "laudos");
+		   troca(7);
+	   }
+	   }
+   }
+   
+   class Buscar4 implements ActionListener{
+	   JTextField txt;
+	   String txtstr;
+	   Buscar4(JTextField txt){
+	   this.txt = txt;
+	   }
+	   public void actionPerformed(ActionEvent e) {
+	   txtstr = txt.getText();
+	   txt.setText("");
+	   if(txtstr.trim().isEmpty()) {
+		   JOptionPane.showMessageDialog(frame8,
+				    "Preencha o CPF!");
+	   }
+	   else {
+		   Arquivos.abrirArquivos(txtstr, "receitas");
+		   troca(8);
+	   }
+	   }
+   }
