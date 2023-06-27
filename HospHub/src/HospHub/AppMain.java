@@ -179,7 +179,7 @@ public class AppMain {
                 System.out.println("Falha ao realizar o pedido: Exame inconpativel");
             }
         } else {
-            System.out.println("O profissional solicitado não é um médico, logo não pode solicitar um exame");
+            System.out.println("O profissional solicitado não é um medique, logo não pode solicitar um exame");
         }
     }
 
@@ -205,7 +205,7 @@ public class AppMain {
             Medique medico = (Medique) profissional;
             medico.gerarLaudo(cpf, doenca, dataFormatada);
         } else {
-            System.out.println("O profissional solicitado não é um médico, logo não pode gerar um laudo");
+            System.out.println("O profissional solicitado não é um medique, logo não pode gerar um laudo");
         }
     }
 
@@ -231,7 +231,7 @@ public class AppMain {
             Medique medico = (Medique) profissional;
             medico.gerarAtestado(cpf, dias, dataFormatada);
         } else {
-            System.out.println("O profissional solicitado não é um médico, logo não pode gerar um atestado");
+            System.out.println("O profissional solicitado não é um medique, logo não pode gerar um atestado");
         }
     }
 
