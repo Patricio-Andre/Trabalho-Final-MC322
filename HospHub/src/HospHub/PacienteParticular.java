@@ -1,5 +1,4 @@
 package HospHub;
-
 public class PacienteParticular extends Paciente{
 	private String convenio;
 	private final int idConvenio;
