@@ -12,7 +12,7 @@ import java.io.ObjectOutputStream;
 public class Hospital implements Cadastrable{
     private HashMap <String, Internacao> mapaInternacoes;
     private String nome;
-    private final String cnpj;
+    private  String cnpj;
     private String telefone;
     private String email;
     private String endereco;
@@ -43,6 +43,10 @@ public class Hospital implements Cadastrable{
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+    
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 
     public String getCnpj() {
@@ -92,6 +96,7 @@ public class Hospital implements Cadastrable{
                 }
                 else{
                     mapaFuncionarios.put(medique.getRegistro(), medique);
+                    return true;
                 }
             }
             else if(profissional instanceof Enfermeire){
@@ -102,15 +107,13 @@ public class Hospital implements Cadastrable{
                 }
                 else{
                     mapaFuncionarios.put(enfermeire.getRegistro(), enfermeire);
+                    return true;
                 }
             }
-<<<<<<< HEAD
-=======
             mapaFuncionarios.put(profissional.getRegistro(), profissional);
             System.out.println("profissional cadastrado com sucesso!");
             salvaArquivos();
             return true;
->>>>>>> e7bfcf51497e99ed5ab70291c421cf167f12b25a
         }
         else if (profissionalouinternacao instanceof Internacao){
             Internacao internacao = (Internacao) profissionalouinternacao;
@@ -125,7 +128,6 @@ public class Hospital implements Cadastrable{
             System.out.println("entrada invalida");
             return false;
     }
-
     public boolean remover (String registroouid)  {
         try{ // se eu conseguir transformar em numero, eh pq eh id 
            int registro = Integer.parseInt(registroouid);
