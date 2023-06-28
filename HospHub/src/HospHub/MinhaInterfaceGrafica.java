@@ -1123,7 +1123,6 @@ public class MinhaInterfaceGrafica  {
    Enfermeire enfermeire = new Enfermeire("Alberta", "12354E", "rua", LocalTime.of(2,0), LocalTime.of(23,59), "88091546734", 15);
    hospital.cadastrar(medique);
    hospital.cadastrar(enfermeire);
-   System.out.println(hospital.ListarFuncionarios());
    new MinhaInterfaceGrafica(hospital);
    	
    	
