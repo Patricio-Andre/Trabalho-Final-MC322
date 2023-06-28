@@ -1,5 +1,4 @@
 package HospHub;
-
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
@@ -31,7 +30,6 @@ public class Arquivos {
 	private static void listaArquivos (String diretorioPrincipal, String CPF) {
         File diretorio = new File(diretorioPrincipal);
         String parteDoNome = CPF;
-        ArrayList<String> caminhosArquivos = new ArrayList<String>();
         // Verifica se o diretório existe
         if (diretorio.exists() && diretorio.isDirectory()) {
             File[] arquivos = diretorio.listFiles();
@@ -43,7 +41,11 @@ public class Arquivos {
                 }
             }
         } else {
-            System.out.println("Diretório não encontrado.");
+        	if (diretorio.mkdirs()) { // Cria o diretório e seus diretórios pai
+                System.out.println("Diretório criado com sucesso!");
+            } else {
+                System.out.println("Falha ao criar o diretório.");
+            }
         }
     }
 	private static void abrir(String caminhoArquivo) {
