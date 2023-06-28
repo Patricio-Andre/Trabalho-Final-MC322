@@ -1,6 +1,4 @@
-
 package HospHub;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -108,20 +106,7 @@ public class ValidaDados {
 	return true;
 }
 
-public static boolean validaRegistro(String registro){
-	if(registro.charAt(registro.length() -1) == 'M' || registro.charAt(registro.length() -1) == 'E'){
-		try{
-			String str = registro.replaceAll("[^\\d]", "");
-			Integer.parseInt(str);
-			return true;
-		}
-		catch(NumberFormatException e){
-			return false;
-		}
-	}
-	return false;
+
 }
-
-
 }
 
