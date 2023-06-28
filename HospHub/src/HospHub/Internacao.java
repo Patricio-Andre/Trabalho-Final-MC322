@@ -15,15 +15,14 @@ public class Internacao {
     private LocalDateTime saida;
     private Hospital hospital;
 
-    public Internacao(Paciente paciente, Enfermeire enfermeire, Medique medique, double custo, LocalDateTime entrada, LocalDateTime saida, Hospital hospital){
+    public Internacao(Paciente paciente, double custo, LocalDateTime entrada, LocalDateTime saida, Hospital hospital){
         try{
-        	alocaEnfermeire();
+        	this.paciente = paciente;
+        	this.medique = paciente.getMedicoAlocado();
+            alocaEnfermeire();
             medique.cadastrar(paciente);
             enfermeire.cadastrar(paciente);
             this.custo = custo;
-            this.paciente = paciente;
-            this.enfermeire = enfermeire;
-            this.medique = medique;
             this.entrada = entrada;
             this.saida = saida;
             id = Integer.toString(contador);
@@ -34,7 +33,6 @@ public class Internacao {
             System.out.println("nao foi possivel cadastrar com esses profissionais");
             return;
         }
-        
     }
     public String getId() {
         return id;
@@ -112,13 +110,12 @@ public class Internacao {
     }
     
     public void alocaEnfermeire() {
-    	// Aloca enfermeiro para o paciente se está no plantão
 		for(ProfissionalSaude values: hospital.getMapaFuncionarios().values()){
 			if(values instanceof Enfermeire) {
 				Enfermeire enfermeire = (Enfermeire) values;
 				if (LocalTime.now().isAfter(enfermeire.getInicioplantao()) 
 					&& LocalTime.now().isBefore(enfermeire.getFimplantao())) {
-					this.enfermeire = enfermeire;
+					setEnfermeire((Enfermeire) values);
 					System.out.println("foi alocado corretamente");
 					return;
 				}
