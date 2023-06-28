@@ -1,5 +1,4 @@
 package HospHub;
-
 import java.time.LocalTime;
 
 public class Enfermeire extends  ProfissionalSaude {
@@ -36,10 +35,5 @@ public class Enfermeire extends  ProfissionalSaude {
         return "o paciente " + paciente + " foi banhado ";
     }
 
-
-    public String toString(){
-        return "e enfermeire " + this.getNome()+ " e registro " + this.getRegistro() + " e endereco "  + this.getEndereco() + " possui um limite de pacientes " + this.getLimitepacientes()
-        + " tem cpf " + this.getCPF() + " inicia plantao em " + this.getInicioplantao() + " e acaba em " + this.getFimplantao();
-    }
     
 }
