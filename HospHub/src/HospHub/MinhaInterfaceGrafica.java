@@ -3,6 +3,8 @@ import javax.swing.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Enumeration;
 
@@ -55,7 +57,7 @@ public class MinhaInterfaceGrafica  {
         frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
      
         frame1.setSize(300, 1000);
-        JLabel label1 = new JLabel("Ultimo paciente que tomou banho:");
+        //JLabel label1 = new JLabel("Ultimo paciente que tomou banho:");
         JMenuBar menuBar = new JMenuBar();
         frame1.setJMenuBar(menuBar);
         frame1.getContentPane().setLayout(new FlowLayout());
@@ -157,7 +159,7 @@ public class MinhaInterfaceGrafica  {
         layout0.putConstraint(SpringLayout.WEST, button0, 10, SpringLayout.WEST, panel0);
         
 
-        frame1.getContentPane().add(label1);
+        //frame1.getContentPane().add(label1);
         frame0.setSize(350, 250);
         frame3.setVisible(false);
         frame1.setVisible(false);
@@ -866,9 +868,20 @@ public class MinhaInterfaceGrafica  {
 						    "Inserir cpf valido!");
 			   }
 			  else {
-		  new PacienteSus(cpfstr, Integer.parseInt(idadestr), Integer.parseInt(dorstr), nomestr, remediostr,
+		  PacienteSus pacientesus = new PacienteSus(cpfstr, Integer.parseInt(idadestr), Integer.parseInt(dorstr), nomestr, remediostr,
 				  especialidadestr,  examesstr, hospital, Integer.parseInt(susstr));
-		   System.out.println("\nNome:" + nomestr + "\nIdade:" + idadestr + " anos" + "\nExames:" + examesstr);
+		  Medique medico = (Medique) hospital.buscaProfissionalSaude("31231M");
+		  Enfermeire enfermeire = (Enfermeire) hospital.buscaProfissionalSaude("12354E");
+		  
+		  try {
+			enfermeire.cadastrar(pacientesus);
+			medico.cadastrar(pacientesus);
+		} catch (ProfissionalUnfitException e1) {
+			e1.printStackTrace();
+		}
+
+//		  medico.gerarAtestado("15645965752", 5, LocalDate.now());
+		  System.out.println("\nNome:" + nomestr + "\nIdade:" + idadestr + " anos" + "\nExames:" + examesstr);
 		   troca(2);}
     }}}
    
@@ -991,8 +1004,17 @@ public class MinhaInterfaceGrafica  {
 							    "Inserir cpf valido!");
 				   }
 				   else {
-					   new PacienteParticular(cpfstr, Integer.parseInt(idadestr), Integer.parseInt(dorstr), nomestr, remediostr,
-							   especialidadestr,  examesstr,  hospital, conveniostr, Integer.parseInt(idstr));
+					   PacienteSus pacientesus = new PacienteSus(cpfstr, Integer.parseInt(idadestr), Integer.parseInt(dorstr), nomestr, remediostr,
+								  especialidadestr,  examesstr, hospital, 1);
+						  Medique medico = (Medique) hospital.buscaProfissionalSaude("31231M");
+						  Enfermeire enfermeire = (Enfermeire) hospital.buscaProfissionalSaude("12354E");
+						  
+						  try {
+							enfermeire.cadastrar(pacientesus);
+							medico.cadastrar(pacientesus);
+						} catch (ProfissionalUnfitException e1) {
+							e1.printStackTrace();
+						}
 		   System.out.println("\nNome:" + nomestr + "\nIdade:" + idadestr + " anos" + "\nExames:" + examesstr);
 		   troca(4);}
     }}}
@@ -1095,12 +1117,14 @@ public class MinhaInterfaceGrafica  {
    }
    public static void main(String[] args) {
 	   
-   Hospital hospital =    new Hospital( "nome",  "cnpj", "telefone", "email", "endereco");
-   hospital.cadastrar(new Medique("Cardiologia", 0, "nome", "31231M","endereco", LocalTime.of(19, 0),
-        LocalTime.of(23, 55), "50930678818", 2));
+   Hospital hospital = new Hospital( "nome",  "cnpj", "telefone", "email", "endereco");
+   Medique medique = new Medique("Cardiologia", 0, "nome", "31231M","endereco", LocalTime.of(7, 0),
+  	        LocalTime.of(23, 55), "50930678818", 2); 
+   Enfermeire enfermeire = new Enfermeire("Alberta", "12354E", "rua", LocalTime.of(2,0), LocalTime.of(23,59), "88091546734", 15);
+   hospital.cadastrar(medique);
+   hospital.cadastrar(enfermeire);
    System.out.println(hospital.ListarFuncionarios());
-   	new MinhaInterfaceGrafica(hospital);
-   
+   new MinhaInterfaceGrafica(hospital);
    	
    	
    }
