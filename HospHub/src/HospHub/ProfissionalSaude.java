@@ -113,7 +113,7 @@ public abstract class ProfissionalSaude implements Cadastrable{
         PacienteNotFoundException e = new PacienteNotFoundException();
         Paciente paciente = null;
         for(Paciente values: mapaPacientes.values()){
-            if(paciente.getCPF().equals(cpf.replaceAll("[^\\d]",""))) {
+            if(values.getCPF().equals(cpf.replaceAll("[^\\d]",""))) {
                 paciente = values;
                 return paciente;
             }
@@ -124,7 +124,7 @@ public abstract class ProfissionalSaude implements Cadastrable{
     protected boolean interfere(String cpf, String remedio) throws RemedioIncompativelException{
         try{
             Paciente paciente = achaPaciente(cpf);
-            if(paciente.getRemediosProibidos().equals(remedio)){
+            if(paciente.getExamesProibidos().contains(remedio)){
                 throw new RemedioIncompativelException();
             }
             return true;
