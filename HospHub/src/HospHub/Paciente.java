@@ -33,9 +33,9 @@ public abstract class Paciente{
 		this.especialidadeNecessaria = especialidadeNecessaria;
 		this.examesProibidos = examesProibidos;
 		this.hospital = hospital;
-		gerarGravidade();
 		adicionarQuarto();
 		alocaMedico();
+		gerarGravidade();
 	}
 	// Getters e Setters
 	public int getIdade() {
@@ -121,7 +121,7 @@ public abstract class Paciente{
 		if (nivelDor >= 7) {
 			gravidade = "vermelho";
 			medicoAlocado.gerarAtestado(CPF, 10, LocalDate.now());
-			System.out.println("o médico " + medicoAlocado.getNome() + "deve gerar um laudo para esse paciente");
+			System.out.println("o médico " + medicoAlocado.getNome() + " deve gerar um laudo para esse paciente");
 			try {
 				medicoAlocado.solicitarExame(CPF, "Exame de Sangue", 25, LocalDate.now());
 			} catch (ExameIncompativelException e) {
@@ -130,7 +130,7 @@ public abstract class Paciente{
 		} else if (nivelDor < 7 && nivelDor >= 4) {
 			gravidade = "amarelo";
 			medicoAlocado.gerarAtestado(CPF, 5, LocalDate.now());
-			System.out.println("o médico " + medicoAlocado.getNome() + "deve gerar uma receita para esse paciente");
+			System.out.println("o médico " + medicoAlocado.getNome() + " deve gerar uma receita para esse paciente");
 		} else if (nivelDor < 4) {
 			gravidade = "verde";
 		}
@@ -203,10 +203,10 @@ public abstract class Paciente{
 		for(ProfissionalSaude values: hospital.getMapaFuncionarios().values()){
 			if(values instanceof Medique) {
 				Medique medico = (Medique) values;
-				if (medico.getEspecializacao() == this.especialidadeNecessaria) {
+				if (medico.getEspecializacao().equals(this.especialidadeNecessaria)) {
 					if (LocalTime.now().isAfter(medico.getInicioplantao()) 
 							&& LocalTime.now().isBefore(medico.getFimplantao())) {
-							this.medicoAlocado = medico;
+							setMedicoAlocado((Medique) values);
 							System.out.println("O médico foi alocado corretamente");
 							return;
 						}
