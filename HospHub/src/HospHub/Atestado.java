@@ -57,7 +57,7 @@ public class Atestado {
     	// Garante que todo arquivo terá um nome diferente;
     	boolean achou = false;
     	for (int i = 0; i < numeroArquivo; i++) {
-    		String diretorioPrincipal = System.getProperty("user.dir") + File.separator + "arquivos" + File.separator + "atestados";
+    		String diretorioPrincipal = System.getProperty("user.dir") + File.separator + "arquivos" + File.separator + "atestado";
             String caminhoArquivo = diretorioPrincipal + File.separator + "Atestados_" + paciente.getCPF() + "_" + numeroArquivo + ".txt";
             File diretorio = new File(diretorioPrincipal);
             
@@ -78,7 +78,7 @@ public class Atestado {
         }
     }
     public void salvarArquivo() {
-    	String diretorioPrincipal = System.getProperty("user.dir") + File.separator + "arquivos" + File.separator + "atestados";
+    	String diretorioPrincipal = System.getProperty("user.dir") + File.separator + "arquivos" + File.separator + "atestado";
         String caminhoArquivo = diretorioPrincipal + File.separator + "Atestados_" + paciente.getCPF() + "_" + numeroArquivo + ".txt";
         BufferedWriter writer = null;
         try {
@@ -93,7 +93,7 @@ public class Atestado {
             writer.newLine();
             writer.write("Paciente: " + paciente.getNome());
             writer.newLine();
-            writer.write("Dias ausência" + diasAusencia);
+            writer.write("Dias ausência: " + diasAusencia);
             writer.newLine();
             writer.write("Data do atendimento: " + dataAtendimento);
             writer.newLine();
@@ -103,7 +103,7 @@ public class Atestado {
             writer.write("Assinatura do profissional de saúde responsável: _________________________________________________________");
             writer.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Não foi possível salvar o atestado");
         }
     }
 }
