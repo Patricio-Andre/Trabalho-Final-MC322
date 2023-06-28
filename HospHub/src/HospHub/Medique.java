@@ -1,5 +1,5 @@
-package HospHub;
 
+package HospHub;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -64,7 +64,7 @@ public class Medique extends ProfissionalSaude {
     }
 
     private boolean exameInterfere(Paciente paciente,String nome){
-        if(paciente.getExamesProibidos().equals(nome)){
+        if(paciente.getExamesProibidos().contains(nome)){
             return true;
         }
         return false;
@@ -74,7 +74,8 @@ public class Medique extends ProfissionalSaude {
     public boolean solicitarExame(String cpf, String nome, double custoE, LocalDate data ) throws ExameIncompativelException{
         ExameIncompativelException a = new ExameIncompativelException();
         try{
-            Paciente paciente = this.achaPaciente(cpf);
+        	System.out.println("passou");
+        	Paciente paciente = achaPaciente(cpf);
             boolean interfere = exameInterfere(paciente, nome);
             if(interfere){
                 throw a;
@@ -96,7 +97,7 @@ public class Medique extends ProfissionalSaude {
 
     public boolean gerarLaudo(String cpf, String doenca, LocalDate dataAtendimento){
         try{
-            Paciente paciente = this.achaPaciente(cpf);
+            Paciente paciente = achaPaciente(cpf);
 
             Laudo laudo = new Laudo(this, doenca, dataAtendimento, paciente);
             paciente.getListaDeLaudos().add(laudo);
